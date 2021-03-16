@@ -4,7 +4,7 @@ let socket = io();
 function clickedButton() {
    // console.log("Click auf Button")
 
-    socket.emit('serverEvent', "west");
+    socket.emit('serverEvent', "ost");
 }
 
 
