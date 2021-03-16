@@ -1,0 +1,16 @@
+body
+{
+    padding: 0;
+    margin: 0;
+}
+
+.button {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: grey;
+    left: 500px;
+    top: 300px;
+  
+
+}
