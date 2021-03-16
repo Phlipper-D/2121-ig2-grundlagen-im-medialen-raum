@@ -2,8 +2,15 @@
 let socket = io();
 
 
+let gridSize = 4;
+$('.wrapper').children().remove();
+$('.wrapper').css("grid-template-columns", "repeat(" + gridSize + ", 130px)");
+for (let i = 0; i < gridSize*gridSize; i++) {
+    $('.wrapper').append('<div class="cell empty"></div>');
+}
 
-$('.button').click(clickedButton);
+
+$('.wrapper').click(clickedButton);
 
 function clickedButton(ev) {
    console.log(ev.target)
@@ -22,35 +29,35 @@ function clickedButton(ev) {
 
 
 
-socket.on('connected', function (msg) {
-    console.log(msg);
-});
+// socket.on('connected', function (msg) {
+//     console.log(msg);
+// });
 
 
-// Incoming events 
-socket.on('serverEvent', function (message) {
- console.log(message)
+// // Incoming events 
+// socket.on('serverEvent', function (message) {
+//  console.log(message)
 
- let Button1 = document.getElementById("Button1")
+//  let Button1 = document.getElementById("Button1")
 
- if (message == "süd") {
-    let y = Button1.offsetTop;
-    y = y + 20;
-    Button1.style.top = y + "px";
- }
- if (message == "ost") {
-    let y = Button1.offsetLeft;
-    y = y + 20;
-    Button1.style.left = y + "px";
- }
- if (message == "nord") {
-    let y = Button1.offsetTop;
-    y = y - 20;
-    Button1.style.top = y + "px";
- }
- if (message == "west") {
-    let y = Button1.offsetLeft;
-    y = y - 20;
-    Button1.style.left = y + "px";
- }
-});
+//  if (message == "süd") {
+//     let y = Button1.offsetTop;
+//     y = y + 20;
+//     Button1.style.top = y + "px";
+//  }
+//  if (message == "ost") {
+//     let y = Button1.offsetLeft;
+//     y = y + 20;
+//     Button1.style.left = y + "px";
+//  }
+//  if (message == "nord") {
+//     let y = Button1.offsetTop;
+//     y = y - 20;
+//     Button1.style.top = y + "px";
+//  }
+//  if (message == "west") {
+//     let y = Button1.offsetLeft;
+//     y = y - 20;
+//     Button1.style.left = y + "px";
+//  }
+// });
