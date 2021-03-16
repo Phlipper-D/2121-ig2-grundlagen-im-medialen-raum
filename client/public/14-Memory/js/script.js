@@ -1,11 +1,24 @@
 // Connecting to server. Don't touch this :-) 
 let socket = io();
 
-function clickedButton() {
-   // console.log("Click auf Button")
 
-    socket.emit('serverEvent', "süd");
+
+$('.button').click(clickedButton);
+
+function clickedButton(ev) {
+   console.log(ev.target)
+
+   let element = $(ev.target);
+
+  if (element.hasClass('border')) {
+         element.removeClass('border');    
+  } else {
+     element.addClass('border')
+  } 
+
+   //  socket.emit('serverEvent', "süd");
 }
+
 
 
 

@@ -9,8 +9,21 @@ body
     width: 100px;
     height: 100px;
     background-color: grey;
-    left: 500px;
+    left: 400px;
     top: 300px;
   
+}
 
+#Button2{
+    left: 100px;
+    top: 200px;
+}
+
+#Button3{
+    left: 600px;
+    top: 600px;
+}
+.border{
+    /* border: 6px solid black; */
+    border-radius: 10px;
 }
