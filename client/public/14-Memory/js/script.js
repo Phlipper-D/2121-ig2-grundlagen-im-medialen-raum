@@ -78,6 +78,10 @@ socket.on('connected', function (msg) {
 socket.on('serverEvent', function (message) {
    console.log("Incoming event: ", message);
 
+   if (message.type == "RandomList") {
+     sounds = message.sounds;
+  }
+
    if (message.type == "reset") {
        whosTurn = 0;
        $('.cell').addClass("empty");
@@ -128,6 +132,8 @@ socket.on('newUsersEvent', function (myID, myIndex, userList) {
    console.log("My index in the list: " + myIndex);
    console.log("That's the new users: ");
    console.log(userList);
+
+   socket.emit('serverEvent', {type:"RandomList",sounds});
 
    playerCount = userList.length;
    myPlayerIndex = myIndex;
