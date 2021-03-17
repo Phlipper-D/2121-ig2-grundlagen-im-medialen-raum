@@ -194,3 +194,20 @@ left: 91px;
 top: 801px;
 background-color: #008fcc;
 }
+
+.status {
+    position: absolute;
+    left: 600px;
+    /*height: 30px;*/
+    margin-bottom: 20px;
+    vertical-align: center;
+    color: white;
+
+}
+
+#playcolor {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 10px;
+}

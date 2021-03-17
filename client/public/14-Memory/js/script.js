@@ -1,6 +1,11 @@
 // Connecting to server. Don't touch this :-) 
 let socket = io();
 
+ let myPlayerIndex = 0;
+// let playerColors = ['#f80', '#08f', '#80f', '#0f8', '#8f0', '#f08']
+// let playerCount = 0;
+ let whosTurn = 0;
+
 
 let gridSize = 4;
 $('.wrapper').children().remove();
@@ -27,6 +32,29 @@ function clickedButton(ev) {
 }
 
 
+$('.cell').click(function() {
+   console.log(myPlayerIndex)
+   if (whosTurn == myPlayerIndex && $(this).hasClass("empty")) {
+       // console.log(this);
+       socket.emit('serverEvent', {type:"played", playerIndex:myPlayerIndex, cellIndex:$(this).index()});
+   }
+});
+
+
+
+
+// function updateStatus() {
+//    $('#player-status').html("There are " + playerCount + " players connected");
+
+//    $('#playcolor').css("background-color", playerColors[myPlayerIndex]);
+//    $('body').css("background-color", playerColors[myPlayerIndex]+"4"); // background color like playing color but less opacity
+
+//    if (whosTurn == myPlayerIndex) {
+//        $('.turn-status').html("It's your turn.");
+//    } else {
+//        $('.turn-status').html("Waiting for player " + (whosTurn+1) + ".");        
+//    }
+// }
 
 
 // socket.on('connected', function (msg) {
