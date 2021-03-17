@@ -8,6 +8,32 @@ let playerCount = 0;
 
  let cardsPlayed = []
 
+let sounds = ['a', 'a', 'b','b','c','c','d','d','e','e','f','f','g','g','h','h',]
+
+
+
+ function shuffle(sounds) {
+   var currentIndex = sounds.length, temporaryValue, randomIndex;
+    
+   while (0 !== currentIndex) {
+     randomIndex = Math.floor(Math.random() * currentIndex);
+     currentIndex -= 1;
+     temporaryValue = sounds[currentIndex];
+     sounds[currentIndex] = sounds[randomIndex];
+     sounds[randomIndex] = temporaryValue;
+   }
+ 
+   return sounds;
+ }
+
+ shuffle(sounds);
+ console.log(sounds);
+
+
+let Sound1 = document.getElementById('0')
+
+Sound1 = sounds[0]
+
 
 let gridSize = 4;
 $('.wrapper').children().remove();
@@ -38,8 +64,9 @@ $('.cell').click(function() {
    console.log(myPlayerIndex)
    if (whosTurn == myPlayerIndex && $(this).hasClass("empty")) {
        // console.log(this);
-       socket.emit('serverEvent', {type:"played", playerIndex:myPlayerIndex, cellIndex:$(this).index()});
-   }
+       socket.emit('serverEvent', {type:"played", playerIndex:myPlayerIndex, cellIndex:$(this).index()});  
+       socket.emit('serverEvent', {type:"sound",Sound1, playerIndex:myPlayerIndex, cellIndex:$(this).index()});
+      }
 });
 
 socket.on('connected', function (msg) {
