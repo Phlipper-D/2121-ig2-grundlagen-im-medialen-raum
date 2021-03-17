@@ -47,9 +47,7 @@ let sounds = ['a', 'a', 'b','b','c','c','d','d','e','e','f','f','g','g','h','h',
    updateStatus();
 });
 
-let Sound1 = document.getElementById('0')
 
-Sound1 = sounds[0]
 
 
 let gridSize = 4;
@@ -92,8 +90,11 @@ socket.on('connected', function (msg) {
 });
 
 
+
 socket.on('serverEvent', function (message) {
    console.log("Incoming event: ", message);
+
+
 
    if (message.type == "RandomList") {
      sounds = message.sounds;
@@ -133,6 +134,10 @@ socket.on('serverEvent', function (message) {
    }
 
 });
+
+let Sound1 = document.getElementById('0')
+
+Sound1 = sounds[0]
 
 
 // function Card(){
