@@ -5,11 +5,19 @@ let myPlayerIndex = 0;
 let playerColors = ['#cc0000', '#70a500', '#cc9710', '#008fcc']
 let playerCount = 0;
 let whosTurn = 0;
+let samples = [];
+
 
 let cardsPlayed = []
 
 let sounds = ['a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e', 'f', 'f', 'g', 'g', 'h', 'h', ]
 
+
+// let mySound;
+// function preload() {
+//   soundFormats('mp3', 'ogg');
+//   mySound = loadSound('assets/PatchArena_marimba-060.mp3/');
+// }
 
 
 function shuffle(sounds) {
@@ -79,18 +87,7 @@ function clickedButton(ev) {
 }
 
 
-$('.cell').click(function () {
-   console.log(myPlayerIndex)
-   if (whosTurn == myPlayerIndex && $(this).hasClass("empty")) {
-      // console.log(this);
-      socket.emit('serverEvent', {
-         type: "played",
-         playerIndex: myPlayerIndex,
-         cellIndex: $(this).index()
-      });
-      //  socket.emit('serverEvent', {type:"sound", playerIndex:myPlayerIndex, cellIndex:$(this).index()});
-   }
-});
+
 
 socket.on('connected', function (msg) {
    console.log(msg);
@@ -99,6 +96,14 @@ socket.on('connected', function (msg) {
    });
 });
 
+
+socket.on('serverEvent', function (message) {
+   if (sounds[message.cellIndex]) {
+      console.log('Sound abgespielt')
+      // mySound.play();
+   }
+
+})
 
 
 socket.on('serverEvent', function (message) {
@@ -122,7 +127,7 @@ socket.on('serverEvent', function (message) {
    }
 
    if (message.type == "played") {
-         console.log(sounds[message.cellIndex])
+      console.log(sounds[message.cellIndex])
       if (cardsPlayed == 1) {
          let cell = $('.wrapper').children()[message.cellIndex];
          cell = $(cell);
@@ -148,6 +153,19 @@ socket.on('serverEvent', function (message) {
 
    }
 
+});
+
+$('.cell').click(function () {
+   console.log(myPlayerIndex)
+   if (whosTurn == myPlayerIndex && $(this).hasClass("empty")) {
+      // console.log(this);
+      socket.emit('serverEvent', {
+         type: "played",
+         playerIndex: myPlayerIndex,
+         cellIndex: $(this).index()
+      });
+      //  socket.emit('serverEvent', {type:"sound", playerIndex:myPlayerIndex, cellIndex:$(this).index()});
+   }
 });
 
 
