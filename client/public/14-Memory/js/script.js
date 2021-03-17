@@ -59,30 +59,35 @@ socket.on('serverEvent', function (message) {
 
    if (message.type == "played") {
 
-      if (cardsPlayed == 1) {
-         let cell = $('.wrapper').children()[message.cellIndex];
-         cell = $(cell);
-         cell.removeClass("empty");
-         cell.css("background-color", playerColors[message.playerIndex]);
-         whosTurn++;
-         if (whosTurn >= playerCount) {
-             whosTurn = 0;
-         }
-         updateStatus();
-      }
+   if (cardsPlayed == 1) {
+   let cell = $('.wrapper').children()[message.cellIndex];
+   cell = $(cell);
+   cell.removeClass("empty");
+   cell.css("background-color", playerColors[message.playerIndex]);
+   whosTurn++;
+   let cardsPlayed = 0
+   if (whosTurn >= playerCount) {
+       whosTurn = 0;
+   }
+   updateStatus();
+   } else {
 
-      if (cardsPlayed == 0) {
-         let cell = $('.wrapper').children()[message.cellIndex];
-         cell = $(cell);
-         cell.removeClass("empty");
-         cell.css("background-color", playerColors[message.playerIndex]);
+   Card()
 
-         cardsPlayed ++
-      } 
+   cardsPlayed ++
+}
 
    }
 
 });
+
+
+function Card(){
+   let cell = $('.wrapper').children()[message.cellIndex];
+   cell = $(cell);
+   cell.removeClass("empty");
+   cell.css("background-color", playerColors[message.playerIndex]);
+}
 
 
 socket.on('newUsersEvent', function (myID, myIndex, userList) {
