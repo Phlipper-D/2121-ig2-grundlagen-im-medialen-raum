@@ -80,7 +80,7 @@ $('.cell').click(function() {
    if (whosTurn == myPlayerIndex && $(this).hasClass("empty")) {
        // console.log(this);
        socket.emit('serverEvent', {type:"played", playerIndex:myPlayerIndex, cellIndex:$(0).index()});  
-       socket.emit('serverEvent', {type:"sound",Sound1, playerIndex:myPlayerIndex, cellIndex:$(this).index()});
+       socket.emit('serverEvent', {type:"sound", playerIndex:myPlayerIndex, cellIndex:$(this).index()});
       }
 });
 
