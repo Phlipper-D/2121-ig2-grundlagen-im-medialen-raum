@@ -63,7 +63,8 @@ socket.on('serverEvent', function (message) {
    let cell = $('.wrapper').children()[message.cellIndex];
    cell = $(cell);
    cell.removeClass("empty");
-   cell.css("background-color", playerColors[message.playerIndex]);
+   //cell.css("background-color", playerColors[message.playerIndex]);
+   cell.css("background-color", '#6b6b6b' );
    whosTurn++;
    cardsPlayed = 0
    if (whosTurn >= playerCount) {
@@ -76,7 +77,7 @@ socket.on('serverEvent', function (message) {
       let cell = $('.wrapper').children()[message.cellIndex];
       cell = $(cell);
       cell.removeClass("empty");
-      cell.css("background-color", playerColors[message.playerIndex]);
+      cell.css("background-color", '#6b6b6b');
 
    cardsPlayed ++
 }
