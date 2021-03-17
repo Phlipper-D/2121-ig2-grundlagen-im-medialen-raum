@@ -18,6 +18,7 @@ let sounds = ['a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e', 'f', 'f', 'g', '
 //   soundFormats('mp3', 'ogg');
 //   mySound = loadSound('assets/PatchArena_marimba-060.mp3/');
 // }
+let audio = new Audio('assets/PatchArena_marimba-060.mp3');
 
 
 function shuffle(sounds) {
@@ -101,6 +102,8 @@ socket.on('serverEvent', function (message) {
    if (sounds[message.cellIndex]) {
       console.log('Sound abgespielt')
       // mySound.play();
+      audio.play();
+
    }
 
 })
