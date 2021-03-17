@@ -7,7 +7,7 @@ let playerCount = 0;
 let whosTurn = 0;
 let samples = [];
 let audio
-
+let IndexCount = [];
 
 let cardsPlayed = []
 
@@ -104,12 +104,7 @@ socket.on('connected', function (msg) {
 
 
 socket.on('serverEvent', function (message) {
-   if (sounds[message.cellIndex]) {
-      console.log('Sound abgespielt')
-      // mySound.play();
-      audio.play();
 
-   }
 
 })
 
@@ -118,13 +113,15 @@ socket.on('serverEvent', function (message) {
    console.log("Incoming event: ", message);
 
 
+   if (sounds[message.cellIndex]) {
+      console.log('Sound abgespielt')
+      // mySound.play();
+      audio.play();
+
+   }
 
    if (message.type == "RandomList") {
       sounds = message.sounds;
-
-      let Sound1 = document.getElementById('0')
-
-      Sound1 = sounds[0]
 
    }
 
@@ -136,31 +133,64 @@ socket.on('serverEvent', function (message) {
 
    if (message.type == "played") {
       console.log(sounds[message.cellIndex])
-      if (cardsPlayed == 1) {
+
+      if (cardsPlayed.length == 1) {
          let cell = $('.wrapper').children()[message.cellIndex];
          cell = $(cell);
          cell.removeClass("empty");
          //cell.css("background-color", playerColors[message.playerIndex]);
-         cell.css("background-color", '#6b6b6b');
-         whosTurn++;
-         cardsPlayed = 0
-         if (whosTurn >= playerCount) {
-            whosTurn = 0;
+         //cell.css("background-color", '#6b6b6b');
+
+         if (cardsPlayed[0] == cardsPlayed[1]) {
+            console.log("Erfolg")
+            let cell = $('.wrapper').children()[message.cellIndex];
+                  cell = $(cell);
+                  //cell.removeClass("empty");
+                  cell.css("background-color", playerColors[message.playerIndex]);
+
+            let cellOld = $('.wrapper').children()[IndexCount[0]];
+                  cellOld = $(cellOld);
+                  //cell.removeClass("empty");
+                  cell.css("background-color", playerColors[message.playerIndex]);
+
+               IndexCount = []
+               
+         } else {
+            console.log('Kein Erfolg')
+            let cell = $('.wrapper').children()[message.cellIndex];
+                  cell = $(cell);
+                  cell.addClass("empty");
+                  cell.css("background-color", '#e2e2e2');
+
+                  IndexCount = []
+
+            whosTurn++;
+            cardsPlayed = []
+            if (whosTurn >= playerCount) {
+               whosTurn = 0;
+            }
+            updateStatus();
          }
-         updateStatus();
 
       } else {
 
          let cell = $('.wrapper').children()[message.cellIndex];
          cell = $(cell);
          cell.removeClass("empty");
-         cell.css("background-color", '#6b6b6b');
+         //cell.css("background-color", '#6b6b6b');
 
-         cardsPlayed++
+         cardsPlayed.push('sounds[message.cellIndex]')
+         IndexCount.push('message.cellIndex')
+
       }
 
    }
 
+   
+
+    
+
+ 
 });
 
 $('.cell').click(function () {
@@ -175,6 +205,7 @@ $('.cell').click(function () {
       //  socket.emit('serverEvent', {type:"sound", playerIndex:myPlayerIndex, cellIndex:$(this).index()});
    }
 });
+
 
 
 

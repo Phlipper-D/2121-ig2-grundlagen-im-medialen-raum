@@ -22,9 +22,14 @@ body {
 
 }
 
+.empty {
+    background-color: #e2e2e2;
+    border-radius: 10px;
+}
+
 .cell {
 
-    background-color: #e2e2e2;
+    background-color: #6b6b6b;
     border-radius: 10px;
 }
 
