@@ -2,8 +2,8 @@
 let socket = io();
 
  let myPlayerIndex = 0;
-// let playerColors = ['#f80', '#08f', '#80f', '#0f8', '#8f0', '#f08']
-// let playerCount = 0;
+let playerColors = ['#cc0000', '#70a500', '#cc9710', '#008fcc']
+let playerCount = 0;
  let whosTurn = 0;
 
 
@@ -40,21 +40,62 @@ $('.cell').click(function() {
    }
 });
 
+socket.on('connected', function (msg) {
+   console.log(msg);
+   socket.emit('serverEvent', {type:"reset"});
+});
 
 
+socket.on('serverEvent', function (message) {
+   console.log("Incoming event: ", message);
 
-// function updateStatus() {
-//    $('#player-status').html("There are " + playerCount + " players connected");
+   if (message.type == "reset") {
+       whosTurn = 0;
+       $('.cell').addClass("empty");
+       $('.cell').css("background-color", "white");
+   }
 
-//    $('#playcolor').css("background-color", playerColors[myPlayerIndex]);
-//    $('body').css("background-color", playerColors[myPlayerIndex]+"4"); // background color like playing color but less opacity
+   if (message.type == "played") {
+       let cell = $('.wrapper').children()[message.cellIndex];
+       cell = $(cell);
+       cell.removeClass("empty");
+       cell.css("background-color", playerColors[message.playerIndex]);
+       whosTurn++;
+       if (whosTurn >= playerCount) {
+           whosTurn = 0;
+       }
+       updateStatus();
+   }
 
-//    if (whosTurn == myPlayerIndex) {
-//        $('.turn-status').html("It's your turn.");
-//    } else {
-//        $('.turn-status').html("Waiting for player " + (whosTurn+1) + ".");        
-//    }
-// }
+});
+
+
+socket.on('newUsersEvent', function (myID, myIndex, userList) {
+   console.log("New users event: ");
+   console.log("That's me: " + myID);
+   console.log("My index in the list: " + myIndex);
+   console.log("That's the new users: ");
+   console.log(userList);
+
+   playerCount = userList.length;
+   myPlayerIndex = myIndex;
+
+   updateStatus();
+});
+
+
+function updateStatus() {
+   $('#player-status').html("There are " + playerCount + " players connected");
+
+   $('#playcolor').css("background-color", playerColors[myPlayerIndex]);
+   $('body').css("background-color", playerColors[myPlayerIndex]+"4"); // background color like playing color but less opacity
+
+   if (whosTurn == myPlayerIndex) {
+       $('.turn-status').html("It's your turn.");
+   } else {
+       $('.turn-status').html("Waiting for player " + (whosTurn+1) + ".");        
+   }
+}
 
 
 // socket.on('connected', function (msg) {
