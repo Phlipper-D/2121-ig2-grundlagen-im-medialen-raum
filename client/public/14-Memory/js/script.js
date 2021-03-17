@@ -6,6 +6,8 @@ let playerColors = ['#cc0000', '#70a500', '#cc9710', '#008fcc']
 let playerCount = 0;
  let whosTurn = 0;
 
+ let cardsPlayed = []
+
 
 let gridSize = 4;
 $('.wrapper').children().remove();
@@ -56,15 +58,28 @@ socket.on('serverEvent', function (message) {
    }
 
    if (message.type == "played") {
-       let cell = $('.wrapper').children()[message.cellIndex];
-       cell = $(cell);
-       cell.removeClass("empty");
-       cell.css("background-color", playerColors[message.playerIndex]);
-       whosTurn++;
-       if (whosTurn >= playerCount) {
-           whosTurn = 0;
-       }
-       updateStatus();
+
+      if (cardsPlayed == 1) {
+         let cell = $('.wrapper').children()[message.cellIndex];
+         cell = $(cell);
+         cell.removeClass("empty");
+         cell.css("background-color", playerColors[message.playerIndex]);
+         whosTurn++;
+         if (whosTurn >= playerCount) {
+             whosTurn = 0;
+         }
+         updateStatus();
+      }
+
+      if (cardsPlayed == 0) {
+         let cell = $('.wrapper').children()[message.cellIndex];
+         cell = $(cell);
+         cell.removeClass("empty");
+         cell.css("background-color", playerColors[message.playerIndex]);
+
+         cardsPlayed ++
+      } 
+
    }
 
 });
@@ -85,7 +100,7 @@ socket.on('newUsersEvent', function (myID, myIndex, userList) {
 
 
 function updateStatus() {
-   $('#player-status').html("There are " + playerCount + " players connected");
+   //$('#player-status').html("There are " + playerCount + " players connected");
 
    $('#playcolor').css("background-color", playerColors[myPlayerIndex]);
    $('body').css("background-color", playerColors[myPlayerIndex]+"4"); // background color like playing color but less opacity
