@@ -181,7 +181,7 @@ socket.on('serverEvent', function (message) {
 
          cardsPlayed.push('sounds[message.cellIndex]')
          IndexCount.push('message.cellIndex')
-
+         
       }
 
    }
