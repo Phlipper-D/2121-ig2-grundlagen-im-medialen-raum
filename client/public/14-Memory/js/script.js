@@ -79,7 +79,7 @@ $('.cell').click(function() {
    console.log(myPlayerIndex)
    if (whosTurn == myPlayerIndex && $(this).hasClass("empty")) {
        // console.log(this);
-       socket.emit('serverEvent', {type:"played", playerIndex:myPlayerIndex, cellIndex:$(this).index()});  
+       socket.emit('serverEvent', {type:"played", playerIndex:myPlayerIndex, cellIndex:$(0).index()});  
        socket.emit('serverEvent', {type:"sound",Sound1, playerIndex:myPlayerIndex, cellIndex:$(this).index()});
       }
 });
@@ -135,9 +135,9 @@ socket.on('serverEvent', function (message) {
 
 });
 
-let Sound1 = document.getElementById('0')
+// let Sound1 = document.getElementById('0')
 
-Sound1 = sounds[0]
+// Sound1 = sounds[0]
 
 
 // function Card(){
