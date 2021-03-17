@@ -70,10 +70,13 @@ socket.on('serverEvent', function (message) {
        whosTurn = 0;
    }
    updateStatus();
+
    } else {
 
-   Card()
-
+      let cell = $('.wrapper').children()[message.cellIndex];
+      cell = $(cell);
+      cell.removeClass("empty");
+      cell.css("background-color", playerColors[message.playerIndex]);
    cardsPlayed ++
 }
 
@@ -82,12 +85,12 @@ socket.on('serverEvent', function (message) {
 });
 
 
-function Card(){
-   let cell = $('.wrapper').children()[message.cellIndex];
-   cell = $(cell);
-   cell.removeClass("empty");
-   cell.css("background-color", playerColors[message.playerIndex]);
-}
+// function Card(){
+//    let cell = $('.wrapper').children()[message.cellIndex];
+//    cell = $(cell);
+//    cell.removeClass("empty");
+//    cell.css("background-color", playerColors[message.playerIndex]);
+// }
 
 
 socket.on('newUsersEvent', function (myID, myIndex, userList) {
