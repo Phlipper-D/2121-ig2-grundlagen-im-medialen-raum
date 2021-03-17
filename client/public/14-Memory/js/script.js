@@ -6,6 +6,7 @@ let playerColors = ['#cc0000', '#70a500', '#cc9710', '#008fcc']
 let playerCount = 0;
 let whosTurn = 0;
 let samples = [];
+let audio
 
 
 let cardsPlayed = []
@@ -18,7 +19,10 @@ let sounds = ['a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e', 'f', 'f', 'g', '
 //   soundFormats('mp3', 'ogg');
 //   mySound = loadSound('assets/PatchArena_marimba-060.mp3/');
 // }
-let audio = new Audio('assets/PatchArena_marimba-060.mp3');
+function preload(){
+   audio = new Audio('assets/PatchArena_marimba-060.mp3');
+}
+
 
 
 function shuffle(sounds) {
