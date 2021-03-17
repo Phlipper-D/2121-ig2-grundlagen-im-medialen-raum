@@ -98,6 +98,11 @@ socket.on('serverEvent', function (message) {
 
    if (message.type == "RandomList") {
      sounds = message.sounds;
+
+     let Sound1 = document.getElementById('0')
+
+      Sound1 = sounds[0]
+
   }
 
    if (message.type == "reset") {
@@ -135,9 +140,6 @@ socket.on('serverEvent', function (message) {
 
 });
 
-let Sound1 = document.getElementById('0')
-
-Sound1 = message.sounds[0]
 
 
 // function Card(){
