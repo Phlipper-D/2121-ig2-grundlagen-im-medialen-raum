@@ -30,6 +30,23 @@ let sounds = ['a', 'a', 'b','b','c','c','d','d','e','e','f','f','g','g','h','h',
  console.log(sounds);
 
 
+
+
+ socket.on('newUsersEvent', function (myID, myIndex, userList) {
+   console.log("New users event: ");
+   console.log("That's me: " + myID);
+   console.log("My index in the list: " + myIndex);
+   console.log("That's the new users: ");
+   console.log(userList);
+
+   socket.emit('serverEvent', {type:"RandomList",sounds});
+
+   playerCount = userList.length;
+   myPlayerIndex = myIndex;
+
+   updateStatus();
+});
+
 let Sound1 = document.getElementById('0')
 
 Sound1 = sounds[0]
@@ -126,20 +143,7 @@ socket.on('serverEvent', function (message) {
 // }
 
 
-socket.on('newUsersEvent', function (myID, myIndex, userList) {
-   console.log("New users event: ");
-   console.log("That's me: " + myID);
-   console.log("My index in the list: " + myIndex);
-   console.log("That's the new users: ");
-   console.log(userList);
 
-   socket.emit('serverEvent', {type:"RandomList",sounds});
-
-   playerCount = userList.length;
-   myPlayerIndex = myIndex;
-
-   updateStatus();
-});
 
 
 function updateStatus() {
