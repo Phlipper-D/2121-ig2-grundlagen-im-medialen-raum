@@ -8,29 +8,33 @@
     <script src="./lib/jquery-3.5.1.js"></script>
     <script src="./lib/p5.min.js"></script>
     <script src="./lib/p5.sound.min.js"></script>
-    
+
 
 </head>
 
 <body id="body">
 
-<div class = "ImageContainer" id="Image" >
-    <img src="./Images/falsch.jpg" alt="falsch.jpg">
-</div>
+    <div class="ImageContainer" id="Image">
+        <img src="./Images/falsch.jpg" alt="falsch.jpg">
+    </div>
+
+    <div class="RestartButton hidden">
+        Restart
+    </div>
 
     <!-- <div class="status" id="player-status">
         There are 3 players connected.
       </div> -->
 
- <!-- Wer ist grade dran    -->
- 
-<div class = "turn-status" id = "turn-status-player" >
-    Waiting for Player
-</div>
+    <!-- Wer ist grade dran    -->
 
-<!-- Welcher Spieler ist man selber -->
+    <div class="turn-status" id="turn-status-player">
+        Waiting for Player
+    </div>
 
-    <div class = "game-status" >
+    <!-- Welcher Spieler ist man selber -->
+
+    <div class="game-status">
         You are Player X
     </div>
 
@@ -38,20 +42,20 @@
 
 
     <!-- Die Spieler "Namen" -->
-    <div class="player-status" id = "status-player1">
+    <div class="player-status" id="status-player1">
         Player 1
-      </div>
-      <div class="player-status" id = "status-player2">
+    </div>
+    <div class="player-status" id="status-player2">
         Player 2
-      </div>
-      <div class="player-status" id = "status-player3">
+    </div>
+    <div class="player-status" id="status-player3">
         Player 3
-      </div>
-      <div class="player-status" id = "status-player4">
+    </div>
+    <div class="player-status" id="status-player4">
         Player 4
-      </div>
+    </div>
 
-<!-- Die Karten -->
+    <!-- Die Karten -->
 
     <div class="wrapper">
         <div class="cell empty"></div>
@@ -73,31 +77,31 @@
     </div>
 
 
-<!-- Die Spieler "Avatare" -->
+    <!-- Die Spieler "Avatare" -->
 
-    <div class = "player" id = "player1" ></div>
-    <div class = "player" id = "player2" ></div>
-    <div class = "player" id = "player3" ></div>
-    <div class = "player" id = "player4" ></div>
+    <div class="player" id="player1"></div>
+    <div class="player" id="player2"></div>
+    <div class="player" id="player3"></div>
+    <div class="player" id="player4"></div>
 
 
-<!-- Der Score der Spieler  -->
-    <div class = "Score" id="ScoreP1"> 
+    <!-- Der Score der Spieler  -->
+    <div class="Score" id="ScoreP1">
         0
     </div>
-    <div class = "Score" id="ScoreP2">
+    <div class="Score" id="ScoreP2">
         0
     </div>
-    <div class = "Score" id="ScoreP3">
+    <div class="Score" id="ScoreP3">
         0
     </div>
-    <div class = "Score" id="ScoreP4">
+    <div class="Score" id="ScoreP4">
         0
     </div>
 
 
-    
-    
+
+
     <script src="js/script.js"></script>
 </body>
 

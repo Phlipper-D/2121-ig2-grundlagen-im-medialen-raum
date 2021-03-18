@@ -30,7 +30,7 @@ function setup() {
 
 
 document.getElementById("Image").onclick = function () {
-   this.remove ();
+   this.remove();
 }
 
 
@@ -98,7 +98,7 @@ socket.on('serverEvent', function (message) {
    console.log("Incoming event: ", message);
 
 
-//SOund wird durch Buchstaben abgespielt
+   //SOund wird durch Buchstaben abgespielt
    if (sounds[message.cellIndex]) {
       console.log('Sound abgespielt')
       // mySound.play();
@@ -107,7 +107,7 @@ socket.on('serverEvent', function (message) {
    }
 
 
-//Random Array wird von neusten Spierler überschrieben
+   //Random Array wird von neusten Spierler überschrieben
    if (message.type == "RandomList") {
       sounds = message.sounds;
 
@@ -118,7 +118,7 @@ socket.on('serverEvent', function (message) {
       $('.cell').addClass("empty");
       $('.cell').css("background-color", '#e2e2e2');
       IndexCount = []
-      cardsPlayed =[];
+      cardsPlayed = [];
       Endgame = []
       ScoreP1 = []
       ScoreP2 = []
@@ -142,77 +142,97 @@ socket.on('serverEvent', function (message) {
 
          if (cardsPlayed[0] === cardsPlayed[1]) {
 
-            setTimeout(function() {
-               
+            setTimeout(function () {
+
                console.log("Erfolg")
-            let cell = $('.wrapper').children()[message.cellIndex];
-                  cell = $(cell);
-                  cell.css("background-color", playerColors[message.playerIndex]);
+               let cell = $('.wrapper').children()[message.cellIndex];
+               cell = $(cell);
+               cell.css("background-color", playerColors[message.playerIndex]);
 
-            let cellOld = $('.wrapper').children()[IndexCount[0]];
-                  cellOld = $(cellOld);
-                  cellOld.css("background-color", playerColors[message.playerIndex]);
+               let cellOld = $('.wrapper').children()[IndexCount[0]];
+               cellOld = $(cellOld);
+               cellOld.css("background-color", playerColors[message.playerIndex]);
 
-                  Endgame.push(cardsPlayed[0], cardsPlayed[1])
+               Endgame.push(cardsPlayed[0], cardsPlayed[1])
 
 
-                  if (message.playerIndex === 0) {
-                     ScoreP1.push(cardsPlayed[0], cardsPlayed [1])
+               if (message.playerIndex === 0) {
+                  ScoreP1.push(cardsPlayed[0], cardsPlayed[1])
+               }
+
+               if (message.playerIndex === 1) {
+                  ScoreP2.push(cardsPlayed[0], cardsPlayed[1])
+               }
+
+               if (message.playerIndex === 2) {
+                  ScoreP3.push(cardsPlayed[0], cardsPlayed[1])
+               }
+
+               if (message.playerIndex === 3) {
+                  ScoreP4.push(cardsPlayed[0], cardsPlayed[1])
+               }
+
+               ScoreP4.length
+
+               if (Endgame.length === 4) {
+                  Winner.push(ScoreP1.length, ScoreP2.length, ScoreP3.length, ScoreP4.length)
+
+                  console.log(Winner)
+                  console.log(Math.max(...Winner))
+
+                  $('.RestartButton').removeClass("hidden");
+
+
+                  if (ScoreP1.length === Math.max(...Winner)) {
+                     console.log("Spieler 1 hat gewonnen")
+
+
                   }
-
-                  if (message.playerIndex === 1) {
-                     ScoreP2.push(cardsPlayed[0], cardsPlayed [1])
+                  if (ScoreP2.length === Math.max(...Winner)) {
+                     console.log("Spieler 2 hat gewonnen")
                   }
-
-                  if (message.playerIndex === 2) {
-                     ScoreP3.push(cardsPlayed[0], cardsPlayed [1])
+                  if (ScoreP3.length === Math.max(...Winner)) {
+                     console.log("Spieler 3 hat gewonnen")
                   }
-
-                  if (message.playerIndex === 3) {
-                     ScoreP4.push(cardsPlayed[0], cardsPlayed [1])
+                  if (ScoreP4.length === Math.max(...Winner)) {
+                     console.log("Spieler 4 hat gewonnen")
                   }
+               }
 
-                  if (Endgame.length === 4) {
-                   Winner.push(ScoreP1.length, ScoreP2.length, ScoreP3.length, ScoreP4.length)
 
-                   Math.max(Winner)
-                   console.log(Math.max(Winner))
-                  }
-
-                  
 
                IndexCount = []
-               cardsPlayed =[];
+               cardsPlayed = [];
                updateStatus();
 
-            }, delay );
-            
-               
+            }, delay);
+
+
          } else {
 
-            setTimeout(function() {
+            setTimeout(function () {
 
-            console.log('Kein Erfolg')
-            let cell = $('.wrapper').children()[message.cellIndex];
-                  cell = $(cell);
-                  cell.addClass("empty");
-                  cell.css("background-color", '#e2e2e2');
+               console.log('Kein Erfolg')
+               let cell = $('.wrapper').children()[message.cellIndex];
+               cell = $(cell);
+               cell.addClass("empty");
+               cell.css("background-color", '#e2e2e2');
 
-                  let cellOld = $('.wrapper').children()[IndexCount[0]];
-                  cellOld = $(cellOld);
-                  cellOld.addClass("empty");
-                  cellOld.css("background-color", '#e2e2e2');
+               let cellOld = $('.wrapper').children()[IndexCount[0]];
+               cellOld = $(cellOld);
+               cellOld.addClass("empty");
+               cellOld.css("background-color", '#e2e2e2');
 
-                  IndexCount = []
+               IndexCount = []
 
-            whosTurn++;
-            cardsPlayed = []
-            if (whosTurn >= playerCount) {
-               whosTurn = 0;
-            }
-            updateStatus();
+               whosTurn++;
+               cardsPlayed = []
+               if (whosTurn >= playerCount) {
+                  whosTurn = 0;
+               }
+               updateStatus();
 
-         }, delay );
+            }, delay);
 
          }
 
@@ -225,7 +245,7 @@ socket.on('serverEvent', function (message) {
 
          cardsPlayed.push(sounds[message.cellIndex])
          IndexCount.push(message.cellIndex)
-         
+
       }
 
    }
@@ -245,7 +265,9 @@ $('.cell').click(function () {
 });
 
 
-
+function getMaxOfArray(Winner) {
+   return Math.max.apply(null, Winner);
+}
 
 //Animationen 
 
@@ -257,11 +279,11 @@ $('.cell').click(function () {
 
 function updateStatus() {
 
-// if (Endgame.length === 16) {
-//    socket.emit('serverEvent', {
-//       type: "reset"
-//    });
-// }
+   // if (Endgame.length === 16) {
+   //    socket.emit('serverEvent', {
+   //       type: "reset"
+   //    });
+   // }
 
 
    $('#playcolor').css("background-color", playerColors[myPlayerIndex]);
@@ -275,8 +297,6 @@ function updateStatus() {
    if (whosTurn == myPlayerIndex) {
       $('.turn-status').html("It's your turn");
    } else {
-      $('.turn-status').html("Waiting for Player " + (whosTurn + 1) );
+      $('.turn-status').html("Waiting for Player " + (whosTurn + 1));
    }
 }
-
-
