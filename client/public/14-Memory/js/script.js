@@ -14,6 +14,8 @@ let cardsPlayed = []
 let sounds = ['a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e', 'f', 'f', 'g', 'g', 'h', 'h', ]
 
 
+delay = 1000
+
 // let mySound;
 // function preload() {
 //   soundFormats('mp3', 'ogg');
@@ -143,7 +145,10 @@ socket.on('serverEvent', function (message) {
          cell.css("background-color", '#6b6b6b');
 
          if (cardsPlayed[0] === cardsPlayed[1]) {
-            console.log("Erfolg")
+
+            setTimeout(function() {
+
+               console.log("Erfolg")
             let cell = $('.wrapper').children()[message.cellIndex];
                   cell = $(cell);
                   //cell.removeClass("empty");
@@ -155,9 +160,15 @@ socket.on('serverEvent', function (message) {
                   cellOld.css("background-color", playerColors[message.playerIndex]);
 
                IndexCount = []
-               cardsPlayed =[]
+               cardsPlayed =[];
+
+            }, delay );
+            
                
          } else {
+
+            setTimeout(function() {
+
             console.log('Kein Erfolg')
             let cell = $('.wrapper').children()[message.cellIndex];
                   cell = $(cell);
@@ -177,6 +188,9 @@ socket.on('serverEvent', function (message) {
                whosTurn = 0;
             }
             updateStatus();
+
+         }, delay );
+         
          }
 
       } else {
