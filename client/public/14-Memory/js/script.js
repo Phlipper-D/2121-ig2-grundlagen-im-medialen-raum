@@ -17,20 +17,20 @@ let ScoreP1 = []
 let ScoreP2 = []
 let ScoreP3 = []
 let ScoreP4 = []
-
+let Endgame = []
 
 delay = 1000
 
-// let mySound;
-// function preload() {
-//   soundFormats('mp3', 'ogg');
-//   mySound = loadSound('assets/PatchArena_marimba-060.mp3/');
-// }
+
+
 function setup() {
    audio = new Audio('assets/PatchArena_marimba-060.mp3');
 }
 
 
+document.getElementById("Image").onclick = function () {
+   this.remove ();
+}
 
 
 function shuffle(sounds) {
@@ -50,8 +50,6 @@ function shuffle(sounds) {
 
 shuffle(sounds);
 console.log(sounds);
-
-
 
 
 socket.on('newUsersEvent', function (myID, myIndex, userList) {
@@ -118,6 +116,14 @@ socket.on('serverEvent', function (message) {
       whosTurn = 0;
       $('.cell').addClass("empty");
       $('.cell').css("background-color", '#e2e2e2');
+      IndexCount = []
+      cardsPlayed =[];
+      Endgame = []
+      ScoreP1 = []
+      ScoreP2 = []
+      ScoreP3 = []
+      ScoreP4 = []
+
    }
 
    if (message.type == "played") {
@@ -144,6 +150,9 @@ socket.on('serverEvent', function (message) {
             let cellOld = $('.wrapper').children()[IndexCount[0]];
                   cellOld = $(cellOld);
                   cellOld.css("background-color", playerColors[message.playerIndex]);
+
+                  Endgame.push(cardsPlayed[0], cardsPlayed[1])
+
 
                   if (message.playerIndex === 0) {
                      ScoreP1.push(cardsPlayed[0], cardsPlayed [1])
@@ -228,15 +237,20 @@ $('.cell').click(function () {
 
 
 //Animationen 
-//Ready-Button
+
 //Sounds mappen
-//Score
 //Spielende? (Sounds werden in Score.Array gepackt und ausgelesen)
 //Replay Button?
 
 
 
 function updateStatus() {
+
+if (Endgame.length === 3) {
+   socket.emit('serverEvent', {
+      type: "reset"
+   });
+}
 
 
    $('#playcolor').css("background-color", playerColors[myPlayerIndex]);

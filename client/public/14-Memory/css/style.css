@@ -142,7 +142,7 @@ body {
 
     left: 91px;
     top: 46px;
-    background-color: #cc0000;
+    background-color: #7DC300;
 }
 
 #player2 {
@@ -151,7 +151,7 @@ body {
     left: 1680px;
     top: 46px;
 
-    background: #70A500;
+    background: #463CA0;
 }
 
 #player3 {
@@ -160,7 +160,7 @@ body {
     left: 1680px;
     top: 801px;
 
-    background: #cc9710;
+    background: #FF6400;
 }
 
 #player4 {
@@ -168,7 +168,7 @@ body {
 
 left: 91px;
 top: 801px;
-background-color: #008fcc;
+background-color: #009BF5;
 }
 
 
@@ -239,3 +239,16 @@ color: #FDFDFD;
     background-color: red;
     border-radius: 10px;
 }
+
+
+.ImageContainer {
+  position: relative;
+  z-index: 101;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  
+}
+
+
