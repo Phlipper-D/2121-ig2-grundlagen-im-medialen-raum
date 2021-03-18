@@ -18,6 +18,7 @@ let ScoreP2 = []
 let ScoreP3 = []
 let ScoreP4 = []
 let Endgame = []
+let Winner = []
 
 delay = 1000
 
@@ -123,6 +124,7 @@ socket.on('serverEvent', function (message) {
       ScoreP2 = []
       ScoreP3 = []
       ScoreP4 = []
+      updateStatus();
 
    }
 
@@ -169,6 +171,15 @@ socket.on('serverEvent', function (message) {
                   if (message.playerIndex === 3) {
                      ScoreP4.push(cardsPlayed[0], cardsPlayed [1])
                   }
+
+                  if (Endgame.length === 4) {
+                   Winner.push(ScoreP1.length, ScoreP2.length, ScoreP3.length, ScoreP4.length)
+
+                   Math.max(Winner)
+                   console.log(Math.max(Winner))
+                  }
+
+                  
 
                IndexCount = []
                cardsPlayed =[];
@@ -246,11 +257,11 @@ $('.cell').click(function () {
 
 function updateStatus() {
 
-if (Endgame.length === 3) {
-   socket.emit('serverEvent', {
-      type: "reset"
-   });
-}
+// if (Endgame.length === 16) {
+//    socket.emit('serverEvent', {
+//       type: "reset"
+//    });
+// }
 
 
    $('#playcolor').css("background-color", playerColors[myPlayerIndex]);
