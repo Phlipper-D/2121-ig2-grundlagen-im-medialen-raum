@@ -163,6 +163,7 @@ socket.on('serverEvent', function (message) {
 
                IndexCount = []
                cardsPlayed =[];
+               updateStatus();
 
             }, delay );
             
@@ -240,6 +241,11 @@ function updateStatus() {
 
    $('#playcolor').css("background-color", playerColors[myPlayerIndex]);
    $('body').css("background-color", playerColors[myPlayerIndex] + "4"); // background color like playing color but less opacity
+
+   $('#ScoreP1').html(ScoreP1.length);
+   $('#ScoreP2').html(ScoreP2.length);
+   $('#ScoreP3').html(ScoreP3.length);
+   $('#ScoreP4').html(ScoreP4.length);
 
    if (whosTurn == myPlayerIndex) {
       $('.turn-status').html("It's your turn");
