@@ -23,15 +23,14 @@ body {
 }
 
 
-
-.cell {
-
-    background-color: #6b6b6b;
+.empty {
+    background-color: #e2e2e2;
     border-radius: 10px;
 }
 
-.border {
-    background-color: #6B6B6B;
+.cell {
+    background-color: #e2e2e2;
+    border-radius: 10px;
 }
 
 
@@ -55,31 +54,6 @@ body {
     top: 133px;
 }
 
-/* #turn-status-player2 {
-    position: absolute;
-    width: 200px;
-    height: 83px;
-    left: 1428px;
-    top: 108px;
-    text-align: right;
-}
-
-#turn-status-player3 {
-    position: absolute;
-    width: 200px;
-    height: 83px;
-    left: 1428px;
-    top: 858px;
-    text-align: right;
-}
-
-#turn-status-player4 {
-    position: absolute;
-    height: 83px;
-    width: 200px;
-    left: 279px;
-    top: 858px;
-} */
 
 .game-status {
     position: absolute;
@@ -203,7 +177,7 @@ background-color: #008fcc;
     /*height: 30px;*/
     margin-bottom: 20px;
     vertical-align: center;
-    color: white;
+    color: #ffffff;
 
 }
 

@@ -151,12 +151,10 @@ socket.on('serverEvent', function (message) {
                console.log("Erfolg")
             let cell = $('.wrapper').children()[message.cellIndex];
                   cell = $(cell);
-                  //cell.removeClass("empty");
                   cell.css("background-color", playerColors[message.playerIndex]);
 
             let cellOld = $('.wrapper').children()[IndexCount[0]];
                   cellOld = $(cellOld);
-                  //cell.removeClass("empty");
                   cellOld.css("background-color", playerColors[message.playerIndex]);
 
                IndexCount = []
@@ -177,7 +175,7 @@ socket.on('serverEvent', function (message) {
 
                   let cellOld = $('.wrapper').children()[IndexCount[0]];
                   cellOld = $(cellOld);
-                  cell.addClass("empty");
+                  cellOld.addClass("empty");
                   cellOld.css("background-color", '#e2e2e2');
 
                   IndexCount = []
@@ -190,7 +188,7 @@ socket.on('serverEvent', function (message) {
             updateStatus();
 
          }, delay );
-         
+
          }
 
       } else {
