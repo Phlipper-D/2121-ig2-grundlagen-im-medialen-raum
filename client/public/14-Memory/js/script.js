@@ -78,21 +78,21 @@ for (let i = 0; i < gridSize * gridSize; i++) {
 }
 
 
-$('.wrapper').click(clickedButton);
+// $('.wrapper').click(clickedButton);
 
-function clickedButton(ev) {
-   console.log(ev.target)
+// function clickedButton(ev) {
+//    console.log(ev.target)
 
-   let element = $(ev.target);
+//    let element = $(ev.target);
 
-   if (element.hasClass('border')) {
-      element.removeClass('border');
-   } else {
-      element.addClass('border')
-   }
+//    if (element.hasClass('border')) {
+//       element.removeClass('border');
+//    } else {
+//       element.addClass('border')
+//    }
 
-   //  socket.emit('serverEvent', "süd");
-}
+//    //  socket.emit('serverEvent', "süd");
+// }
 
 
 
@@ -130,7 +130,7 @@ socket.on('serverEvent', function (message) {
    if (message.type == "reset") {
       whosTurn = 0;
       $('.cell').addClass("empty");
-      $('.cell').css("background-color", "white");
+      $('.cell').css("background-color", '#e2e2e2');
    }
 
    if (message.type == "played") {
