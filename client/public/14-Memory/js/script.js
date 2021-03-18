@@ -13,6 +13,11 @@ let cardsPlayed = []
 
 let sounds = ['a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e', 'f', 'f', 'g', 'g', 'h', 'h', ]
 
+let ScoreP1 = []
+let ScoreP2 = []
+let ScoreP3 = []
+let ScoreP4 = []
+
 
 delay = 1000
 
@@ -79,25 +84,6 @@ for (let i = 0; i < gridSize * gridSize; i++) {
 }
 
 
-// $('.wrapper').click(clickedButton);
-
-// function clickedButton(ev) {
-//    console.log(ev.target)
-
-//    let element = $(ev.target);
-
-//    if (element.hasClass('border')) {
-//       element.removeClass('border');
-//    } else {
-//       element.addClass('border')
-//    }
-
-//    //  socket.emit('serverEvent', "süd");
-// }
-
-
-
-
 socket.on('connected', function (msg) {
    console.log(msg);
    socket.emit('serverEvent', {
@@ -138,6 +124,7 @@ socket.on('serverEvent', function (message) {
       console.log(sounds[message.cellIndex])
 
       if (cardsPlayed.length == 1) {
+
          let cell = $('.wrapper').children()[message.cellIndex];
          cell = $(cell);
          cell.removeClass("empty");
@@ -148,7 +135,7 @@ socket.on('serverEvent', function (message) {
          if (cardsPlayed[0] === cardsPlayed[1]) {
 
             setTimeout(function() {
-
+               
                console.log("Erfolg")
             let cell = $('.wrapper').children()[message.cellIndex];
                   cell = $(cell);
@@ -157,6 +144,22 @@ socket.on('serverEvent', function (message) {
             let cellOld = $('.wrapper').children()[IndexCount[0]];
                   cellOld = $(cellOld);
                   cellOld.css("background-color", playerColors[message.playerIndex]);
+
+                  if (message.playerIndex === 0) {
+                     ScoreP1.push(cardsPlayed[0], cardsPlayed [1])
+                  }
+
+                  if (message.playerIndex === 1) {
+                     ScoreP2.push(cardsPlayed[0], cardsPlayed [1])
+                  }
+
+                  if (message.playerIndex === 2) {
+                     ScoreP3.push(cardsPlayed[0], cardsPlayed [1])
+                  }
+
+                  if (message.playerIndex === 3) {
+                     ScoreP4.push(cardsPlayed[0], cardsPlayed [1])
+                  }
 
                IndexCount = []
                cardsPlayed =[];
@@ -205,12 +208,6 @@ socket.on('serverEvent', function (message) {
       }
 
    }
-
-   
-
-    
-
- 
 });
 
 $('.cell').click(function () {
@@ -245,7 +242,7 @@ function updateStatus() {
    $('body').css("background-color", playerColors[myPlayerIndex] + "4"); // background color like playing color but less opacity
 
    if (whosTurn == myPlayerIndex) {
-      $('.turn-status').html("It's your turn.");
+      $('.turn-status').html("It's your turn");
    } else {
       $('.turn-status').html("Waiting for Player " + (whosTurn + 1) );
    }
