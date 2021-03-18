@@ -55,6 +55,7 @@ socket.on('newUsersEvent', function (myID, myIndex, userList) {
    console.log("My index in the list: " + myIndex);
    console.log("That's the new users: ");
    console.log(userList);
+   $('.game-status').html("You are Player " + (myIndex + 1));
 
    socket.emit('serverEvent', {
       type: "RandomList",
@@ -228,19 +229,17 @@ $('.cell').click(function () {
 
 
 
-// function Card(){
-//    let cell = $('.wrapper').children()[message.cellIndex];
-//    cell = $(cell);
-//    cell.removeClass("empty");
-//    cell.css("background-color", playerColors[message.playerIndex]);
-// }
-
-
+//Animationen 
+//Ready-Button
+//Sounds mappen
+//Score
+//Spielende? (Sounds werden in Score.Array gepackt und ausgelesen)
+//Replay Button?
 
 
 
 function updateStatus() {
-   //$('#player-status').html("There are " + playerCount + " players connected");
+
 
    $('#playcolor').css("background-color", playerColors[myPlayerIndex]);
    $('body').css("background-color", playerColors[myPlayerIndex] + "4"); // background color like playing color but less opacity
@@ -248,40 +247,8 @@ function updateStatus() {
    if (whosTurn == myPlayerIndex) {
       $('.turn-status').html("It's your turn.");
    } else {
-      $('.turn-status').html("Waiting for player " + (whosTurn + 1) + ".");
+      $('.turn-status').html("Waiting for Player " + (whosTurn + 1) );
    }
 }
 
 
-// socket.on('connected', function (msg) {
-//     console.log(msg);
-// });
-
-
-// // Incoming events 
-// socket.on('serverEvent', function (message) {
-//  console.log(message)
-
-//  let Button1 = document.getElementById("Button1")
-
-//  if (message == "süd") {
-//     let y = Button1.offsetTop;
-//     y = y + 20;
-//     Button1.style.top = y + "px";
-//  }
-//  if (message == "ost") {
-//     let y = Button1.offsetLeft;
-//     y = y + 20;
-//     Button1.style.left = y + "px";
-//  }
-//  if (message == "nord") {
-//     let y = Button1.offsetTop;
-//     y = y - 20;
-//     Button1.style.top = y + "px";
-//  }
-//  if (message == "west") {
-//     let y = Button1.offsetLeft;
-//     y = y - 20;
-//     Button1.style.left = y + "px";
-//  }
-// });
