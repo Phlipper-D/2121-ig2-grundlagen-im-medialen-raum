@@ -105,6 +105,7 @@ socket.on('connected', function (msg) {
 
 
 //Nachrichten kommen an und werden verarbeitet 
+
 socket.on('serverEvent', function (message) {
    console.log("Incoming event: ", message);
 
@@ -139,7 +140,7 @@ socket.on('serverEvent', function (message) {
          cell.removeClass("empty");
          cardsPlayed.push(sounds[message.cellIndex])
          //cell.css("background-color", playerColors[message.playerIndex]);
-         //cell.css("background-color", '#6b6b6b');
+         cell.css("background-color", '#6b6b6b');
 
          if (cardsPlayed[0] === cardsPlayed[1]) {
             console.log("Erfolg")
@@ -165,7 +166,7 @@ socket.on('serverEvent', function (message) {
 
                   let cellOld = $('.wrapper').children()[IndexCount[0]];
                   cellOld = $(cellOld);
-                  //cell.removeClass("empty");
+                  cell.addClass("empty");
                   cellOld.css("background-color", '#e2e2e2');
 
                   IndexCount = []
@@ -183,7 +184,7 @@ socket.on('serverEvent', function (message) {
          let cell = $('.wrapper').children()[message.cellIndex];
          cell = $(cell);
          cell.removeClass("empty");
-         //cell.css("background-color", '#6b6b6b');
+         cell.css("background-color", '#6b6b6b');
 
          cardsPlayed.push(sounds[message.cellIndex])
          IndexCount.push(message.cellIndex)
