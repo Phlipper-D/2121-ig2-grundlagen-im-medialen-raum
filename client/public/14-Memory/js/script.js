@@ -151,9 +151,10 @@ socket.on('serverEvent', function (message) {
             let cellOld = $('.wrapper').children()[IndexCount[0]];
                   cellOld = $(cellOld);
                   //cell.removeClass("empty");
-                  cell.css("background-color", playerColors[message.playerIndex]);
+                  cellOld.css("background-color", playerColors[message.playerIndex]);
 
                IndexCount = []
+               cardsPlayed =[]
                
          } else {
             console.log('Kein Erfolg')
@@ -165,7 +166,7 @@ socket.on('serverEvent', function (message) {
                   let cellOld = $('.wrapper').children()[IndexCount[0]];
                   cellOld = $(cellOld);
                   //cell.removeClass("empty");
-                  cell.css("background-color", '#e2e2e2');
+                  cellOld.css("background-color", '#e2e2e2');
 
                   IndexCount = []
 
