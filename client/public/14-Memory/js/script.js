@@ -73,7 +73,7 @@ socket.on('newUsersEvent', function (myID, myIndex, userList) {
 
 let gridSize = 4;
 $('.wrapper').children().remove();
-$('.wrapper').css("grid-template-columns", "repeat(" + gridSize + ", 130px)");
+$('.wrapper').css("grid-template-columns", "repeat(" + gridSize + ", 100px)");
 for (let i = 0; i < gridSize * gridSize; i++) {
    $('.wrapper').append('<div class="cell empty"></div>');
 }

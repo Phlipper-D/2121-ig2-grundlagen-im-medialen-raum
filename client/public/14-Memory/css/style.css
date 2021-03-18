@@ -13,12 +13,13 @@ body {
 
 .wrapper {
     position:absolute;
-    left: 650px; ;
-    top: 200px;
+    left: 715px; ;
+    top: 250px;
     display: grid;
-    grid-template-columns: repeat(4, 130px);
-    grid-gap: 30px;
-    grid-auto-rows: minmax(130px, auto);
+    grid-template-columns: repeat(4, 100px);
+    grid-gap: 25px;
+    grid-auto-rows: minmax(100px, auto);
+
 
 }
 
@@ -37,21 +38,22 @@ body {
 .turn-status {
     font-family: Univers Next Pro;
     font-style: normal;
-    font-weight: regular;
-    font-size: 30px;
+    font-weight: bold;
+    font-size: 36px;
     line-height: 36px;
     display: flex;
     align-items: center;
+    text-align: center;
 
-    color: #FDFDFD;
-}
-
-#turn-status-player {
+   
+    
     position: absolute;
     width: 500px;
     height: 37px;
-    left: 820px;
+    left: 775px;
     top: 100px;
+
+    color: #FDFDFD;
 }
 
 
@@ -59,13 +61,13 @@ body {
     position: absolute;
     width: 310px;
     height: 150px;
-    left: 813px;
-    top: -30px;
+    left: 838px;
+    top: 100px;
 
     font-family: Univers Next Pro;
     font-style: normal;
-    font-weight: bold;
-    font-size: 36px;
+    font-weight: regular;
+    font-size: 30px;
     line-height: 43px;
     display: flex;
     align-items: center;
@@ -91,7 +93,7 @@ body {
     position: absolute;
     width: 174px;
     height: 150px;
-    left: 279px;
+    left: 255px;
     top: 45px;
 }
 
@@ -115,9 +117,10 @@ body {
 
 #status-player4 {
     position: absolute;
+    position: absolute;
     width: 174px;
     height: 150px;
-    left: 279px;
+    left: 255px;
     top: 800px;
     
 }
@@ -128,15 +131,14 @@ body {
 
 .player {
     
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     border-radius: 100px;
 }
 
 #player1 {
     position: absolute;
-    width: 150px;
-    height: 150px;
+
     left: 91px;
     top: 46px;
     background-color: #cc0000;
@@ -144,8 +146,7 @@ body {
 
 #player2 {
     position: absolute;
-    width: 150px;
-    height: 150px;
+
     left: 1680px;
     top: 46px;
 
@@ -154,8 +155,7 @@ body {
 
 #player3 {
     position: absolute;
-    width: 150px;
-    height: 150px;
+
     left: 1680px;
     top: 801px;
 
@@ -164,8 +164,7 @@ body {
 
 #player4 {
     position: absolute;
-width: 150px;
-height: 150px;
+
 left: 91px;
 top: 801px;
 background-color: #008fcc;
