@@ -19,7 +19,7 @@ let IndexCount = [];
 
 let cardsPlayed = []
 
-let sounds = ['1', '1', '2', '2', '3', '3', '4', '4', 'e', 'e', 'f', 'f', 'g', 'g', 'h', 'h', ]
+let sounds = ['1', '1', '2', '2', '3', '3', '4', '4', '5', '5', '6', '6', '7', '7', '8', '8', ]
 
 
 
@@ -35,9 +35,9 @@ delay = 1000
 
 
 function setup() {
-   audioa = new Audio('assets/PatchArena_marimba-060.mp3');
-   audiob = new Audio('assets/PatchArena_marimba-061.mp3');
-   audioc = new Audio('assets/PatchArena_marimba-062.mp3');
+   audioa = new Audio('https://s3-us-west-2.amazonaws.com/s.cdpn.io/62105/dino-win.mp3');
+   audiob = new Audio('https://s3-us-west-2.amazonaws.com/s.cdpn.io/62105/audio-ahahah.ogg');
+   audioc = new Audio('https://s3-us-west-2.amazonaws.com/s.cdpn.io/62105/audio-egg.mp3');
    audiod = new Audio('assets/PatchArena_marimba-063.mp3');
    audioe = new Audio('assets/PatchArena_marimba-064.mp3');
    audiof = new Audio('assets/PatchArena_marimba-065.mp3');
@@ -169,6 +169,26 @@ socket.on('serverEvent', function (message) {
             console.log('Sound c abgespielt')
             audioc.play();
          }
+         if (sounds[message.cellIndex] == 4) {
+            console.log('Sound d abgespielt')
+            audiod.play();
+         }
+         if (sounds[message.cellIndex] == 5) {
+            console.log('Sound e abgespielt')
+            audioe.play();
+         }
+         if (sounds[message.cellIndex] == 6) {
+            console.log('Sound f abgespielt')
+            audiof.play();
+         }
+         if (sounds[message.cellIndex] == 7) {
+            console.log('Sound g abgespielt')
+            audiog.play();
+         }
+         if (sounds[message.cellIndex] == 8) {
+            console.log('Sound h abgespielt')
+            audioh.play();
+         }
 
       if (cardsPlayed.length == 1) {
 
@@ -213,7 +233,7 @@ socket.on('serverEvent', function (message) {
 
               
 
-               if (Endgame.length === 4) {
+               if (Endgame.length === 16) {
                   Winner.push(ScoreP1.length, ScoreP2.length, ScoreP3.length, ScoreP4.length)
 
                   console.log(Winner)
