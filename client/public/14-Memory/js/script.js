@@ -19,11 +19,9 @@ let IndexCount = [];
 
 let cardsPlayed = []
 
-let sounds = ['a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e', 'f', 'f', 'g', 'g', 'h', 'h', ]
+let sounds = ['1', '1', '2', '2', '3', '3', 'd', 'd', 'e', 'e', 'f', 'f', 'g', 'g', 'h', 'h', ]
 
-let a 
-let b
-let c 
+
 
 let ScoreP1 = []
 let ScoreP2 = []
@@ -120,15 +118,15 @@ socket.on('serverEvent', function (message) {
    //SOund wird durch Buchstaben abgespielt
    if (sounds[message.cellIndex]) {
 
-      if (sounds[message.cellIndex === a]) {
+      if (sounds[message.cellIndex === 1]) {
          console.log('Sound A abgespielt')
          audioa.play();
 }
-      if (sounds[message.cellIndex === b]) {
+      if (sounds[message.cellIndex === 2]) {
    console.log('Sound B abgespielt')
    audiob.play();
 }
-if (sounds[message.cellIndex === c]) {
+if (sounds[message.cellIndex === 3]) {
    console.log('Sound c abgespielt')
    audioc.play();
 }
