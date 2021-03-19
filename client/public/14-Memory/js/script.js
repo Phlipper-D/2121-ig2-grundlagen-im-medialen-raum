@@ -19,7 +19,7 @@ let IndexCount = [];
 
 let cardsPlayed = []
 
-let sounds = ['1', '1', '2', '2', '3', '3', 'd', 'd', 'e', 'e', 'f', 'f', 'g', 'g', 'h', 'h', ]
+let sounds = ['1', '1', '2', '2', '3', '3', '4', '4', 'e', 'e', 'f', 'f', 'g', 'g', 'h', 'h', ]
 
 
 
