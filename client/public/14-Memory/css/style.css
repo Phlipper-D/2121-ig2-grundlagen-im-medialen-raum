@@ -20,8 +20,6 @@ body {
     grid-template-columns: repeat(4, 100px);
     grid-gap: 25px;
     grid-auto-rows: minmax(100px, auto);
-
-
 }
 
 .Ending {
@@ -36,7 +34,6 @@ body {
     width: 1920px;
     height: 1080px;
     z-index: 102;
-
 }
 
 .empty {

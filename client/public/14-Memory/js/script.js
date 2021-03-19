@@ -6,6 +6,7 @@ let playerColors = ['#7dc300', '#463ca0', '#ff6400', '#009ef5']
 let playerCount = 0;
 let whosTurn = 0;
 let samples = [];
+
 let audioa
 let audiob
 let audioc
@@ -21,7 +22,7 @@ let cardsPlayed = []
 
 let sounds = ['1', '1', '2', '2', '3', '3', '4', '4', '5', '5', '6', '6', '7', '7', '8', '8', ]
 
-
+let SoundScore = []
 
 let ScoreP1 = []
 let ScoreP2 = []
@@ -31,8 +32,6 @@ let Endgame = []
 let Winner = []
 
 delay = 1000
-
-
 
 function setup() {
    audioa = new Audio('https://s3-us-west-2.amazonaws.com/s.cdpn.io/62105/dino-win.mp3');
@@ -86,8 +85,6 @@ socket.on('newUsersEvent', function (myID, myIndex, userList) {
 });
 
 
-
-
 let gridSize = 4;
 $('.wrapper').children().remove();
 $('.wrapper').css("grid-template-columns", "repeat(" + gridSize + ", 100px)");
@@ -103,8 +100,6 @@ socket.on('connected', function (msg) {
    });
 });
 
-
-
 //Nachrichten kommen an und werden verarbeitet 
 
 socket.on('serverEvent', function (message) {
@@ -118,7 +113,6 @@ socket.on('serverEvent', function (message) {
    //Random Array wird von neusten Spierler überschrieben
    if (message.type == "RandomList") {
       sounds = message.sounds;
-
    }
 
    if (message.type == "reset") {
@@ -222,19 +216,22 @@ socket.on('serverEvent', function (message) {
 
 
                if (message.playerIndex === 0) {
-                  ScoreP1.push(cardsPlayed[0], cardsPlayed[1])
+
+                  ScoreP1.push(cardsPlayed[0])
+
+                  ScoreP1[0].play();
                }
 
                if (message.playerIndex === 1) {
-                  ScoreP2.push(cardsPlayed[0], cardsPlayed[1])
+                  ScoreP2.push(cardsPlayed[0])
                }
 
                if (message.playerIndex === 2) {
-                  ScoreP3.push(cardsPlayed[0], cardsPlayed[1])
+                  ScoreP3.push(cardsPlayed[0])
                }
 
                if (message.playerIndex === 3) {
-                  ScoreP4.push(cardsPlayed[0], cardsPlayed[1])
+                  ScoreP4.push(cardsPlayed[0])
                }
 
               
@@ -244,8 +241,6 @@ socket.on('serverEvent', function (message) {
 
                   console.log(Winner)
                   console.log(Math.max(...Winner))
-
-                  //$('.RestartButton').removeClass("hidden");
 
                   setTimeout(function () {
 
@@ -263,6 +258,8 @@ socket.on('serverEvent', function (message) {
 
                   if (ScoreP1.length === Math.max(...Winner)) {
                      console.log("Spieler 1 hat gewonnen")
+
+                     Sc
 
                      setTimeout(function () { 
                      $('.WinningText').removeClass("hidden");
@@ -298,9 +295,6 @@ socket.on('serverEvent', function (message) {
                      }, delay * 2 );
                   }
                }
-
-
-
                IndexCount = []
                cardsPlayed = [];
                updateStatus();
@@ -354,13 +348,11 @@ socket.on('serverEvent', function (message) {
 $('.cell').click(function () {
    console.log(myPlayerIndex)
    if (whosTurn == myPlayerIndex && $(this).hasClass("empty")) {
-      // console.log(this);
       socket.emit('serverEvent', {
          type: "played",
          playerIndex: myPlayerIndex,
          cellIndex: $(this).index()
       });
-      //  socket.emit('serverEvent', {type:"sound", playerIndex:myPlayerIndex, cellIndex:$(this).index()});
    }
 });
 
@@ -382,26 +374,19 @@ $('.RestartButton').click(function () {
 
 //Animationen 
 //Spielende? (Sounds werden in Score.Array gepackt und ausgelesen)
-//Replay Button?
+//Sounds
 
 
 
 function updateStatus() {
 
-   // if (Endgame.length === 16) {
-   //    socket.emit('serverEvent', {
-   //       type: "reset"
-   //    });
-   // }
-
-
    $('#playcolor').css("background-color", playerColors[myPlayerIndex]);
    $('body').css("background-color", playerColors[myPlayerIndex] + "4"); // background color like playing color but less opacity
 
-   $('#ScoreP1').html(ScoreP1.length);
-   $('#ScoreP2').html(ScoreP2.length);
-   $('#ScoreP3').html(ScoreP3.length);
-   $('#ScoreP4').html(ScoreP4.length);
+   $('#ScoreP1').html(ScoreP1.length * 2);
+   $('#ScoreP2').html(ScoreP2.length * 2);
+   $('#ScoreP3').html(ScoreP3.length * 2);
+   $('#ScoreP4').html(ScoreP4.length * 2);
 
    if (whosTurn == myPlayerIndex) {
       $('.turn-status').html("It's your turn");
