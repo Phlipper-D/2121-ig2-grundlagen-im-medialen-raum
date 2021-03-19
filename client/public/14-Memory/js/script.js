@@ -78,10 +78,6 @@ socket.on('newUsersEvent', function (myID, myIndex, userList) {
    console.log(userList);
    $('.game-status').html("You are Player " + (myIndex + 1));
 
-   socket.emit('serverEvent', {
-      type: "RandomList",
-      sounds
-   });
 
    playerCount = userList.length;
    myPlayerIndex = myIndex;
@@ -154,10 +150,14 @@ socket.on('serverEvent', function (message) {
          }
          return sounds;
       }
-      
       shuffle(sounds);
       console.log(sounds);
       updateStatus();
+
+      socket.emit('serverEvent', {
+         type: "RandomList",
+         sounds
+      });
    }
 
    if (message.type == "played") {
