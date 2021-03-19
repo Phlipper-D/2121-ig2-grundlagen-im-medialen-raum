@@ -129,6 +129,11 @@ socket.on('serverEvent', function (message) {
       whosTurn = 0;
       $('.cell').addClass("empty");
       $('.cell').css("background-color", '#e2e2e2');
+      $('.turn-status').removeClass("hidden");
+      $('.game-status').removeClass("hidden");
+      $('.Overlay').addClass("hidden");
+      $('.WinningText').addClass("hidden");
+      $('.RestartButton').addClass("hidden");
       IndexCount = []
       cardsPlayed = [];
       Endgame = []
@@ -136,8 +141,23 @@ socket.on('serverEvent', function (message) {
       ScoreP2 = []
       ScoreP3 = []
       ScoreP4 = []
+      function shuffle(sounds) {
+         var currentIndex = sounds.length,
+            temporaryValue, randomIndex;
+      
+         while (0 !== currentIndex) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = sounds[currentIndex];
+            sounds[currentIndex] = sounds[randomIndex];
+            sounds[randomIndex] = temporaryValue;
+         }
+         return sounds;
+      }
+      
+      shuffle(sounds);
+      console.log(sounds);
       updateStatus();
-
    }
 
    if (message.type == "played") {
@@ -235,7 +255,7 @@ socket.on('serverEvent', function (message) {
 
                      setTimeout(function () { 
                      $('.Overlay').removeClass("hidden");
-                     $('.RestartButton').removeClass("hidden");
+                    
                      
 
                      }, delay / 2 );
@@ -244,18 +264,38 @@ socket.on('serverEvent', function (message) {
                   if (ScoreP1.length === Math.max(...Winner)) {
                      console.log("Spieler 1 hat gewonnen")
 
+                     setTimeout(function () { 
                      $('.WinningText').removeClass("hidden");
                      $('.WinningText').html("Player 1 won the Game");
-
+                     $('.RestartButton').removeClass("hidden");
+                  }, delay * 2 );
                   }
                   if (ScoreP2.length === Math.max(...Winner)) {
                      console.log("Spieler 2 hat gewonnen")
+
+                     setTimeout(function () { 
+                        $('.WinningText').removeClass("hidden");
+                        $('.WinningText').html("Player 2 won the Game");
+                        $('.RestartButton').removeClass("hidden");
+                     }, delay * 2 );
                   }
                   if (ScoreP3.length === Math.max(...Winner)) {
                      console.log("Spieler 3 hat gewonnen")
+
+                     setTimeout(function () { 
+                        $('.WinningText').removeClass("hidden");
+                        $('.WinningText').html("Player 3 won the Game");
+                        $('.RestartButton').removeClass("hidden");
+                     }, delay * 2 );
                   }
                   if (ScoreP4.length === Math.max(...Winner)) {
                      console.log("Spieler 4 hat gewonnen")
+
+                     setTimeout(function () { 
+                        $('.WinningText').removeClass("hidden");
+                        $('.WinningText').html("Player 4 won the Game");
+                        $('.RestartButton').removeClass("hidden");
+                     }, delay * 2 );
                   }
                }
 
@@ -328,6 +368,17 @@ $('.cell').click(function () {
 function getMaxOfArray(Winner) {
    return Math.max.apply(null, Winner);
 }
+
+
+$('.RestartButton').click(function () {
+   
+   if (Endgame.length === 16) {
+      console.log("Restart")
+      socket.emit('serverEvent', {
+         type: "reset",
+      });
+   }
+});
 
 //Animationen 
 //Spielende? (Sounds werden in Score.Array gepackt und ausgelesen)
