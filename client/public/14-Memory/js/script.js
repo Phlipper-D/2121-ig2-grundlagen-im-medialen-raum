@@ -2,7 +2,7 @@
 let socket = io();
 
 let myPlayerIndex = 0;
-let playerColors = ['#cc0000', '#70a500', '#cc9710', '#008fcc']
+let playerColors = ['#7dc300', '#463ca0', '#ff6400', '#009ef5']
 let playerCount = 0;
 let whosTurn = 0;
 let samples = [];
