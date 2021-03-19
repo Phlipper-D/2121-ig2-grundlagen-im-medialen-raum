@@ -239,7 +239,7 @@ socket.on('serverEvent', function (message) {
 
               
 
-               if (Endgame.length === 4) {
+               if (Endgame.length === 16) {
                   Winner.push(ScoreP1.length, ScoreP2.length, ScoreP3.length, ScoreP4.length)
 
                   console.log(Winner)
