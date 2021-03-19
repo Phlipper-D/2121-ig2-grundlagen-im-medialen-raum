@@ -15,6 +15,7 @@ let audioe
 let audiof
 let audiog
 let audioh
+let Unentschieden
 
 let IndexCount = [];
 
@@ -31,6 +32,8 @@ let ScoreP4 = []
 let Endgame = []
 let Winner = []
 
+let Gleichstand
+
 delay = 1000
 
 function setup() {
@@ -42,6 +45,7 @@ function setup() {
    audiof = new Audio('assets/PatchArena_marimba-065.mp3');
    audiog = new Audio('assets/PatchArena_marimba-066.mp3');
    audioh = new Audio('assets/PatchArena_marimba-067.mp3');
+   Unentschieden = new Audio('https://www.myinstants.com/media/sounds/erro.mp3');
 }
 
 
@@ -208,12 +212,35 @@ socket.on('serverEvent', function (message) {
                   Winner = [ScoreP1.length, ScoreP2.length, ScoreP3.length, ScoreP4.length]
                   
 
+                  // let winnerIndex = 0;
+                  // for (let i = 1; i < Winner.length; i++) {
+                  //    if (Winner[i] === Winner[winnerIndex]) {
+                  //       console.log("Gleichstand")
+                  //    } else {
+                  //    if (Winner[i] > Winner[winnerIndex]) {
+                  //       winnerIndex = i;
+                  //    }
+                  // }
+                  // }
+
                   let winnerIndex = 0;
                   for (let i = 1; i < Winner.length; i++) {
                      if (Winner[i] > Winner[winnerIndex]) {
                         winnerIndex = i;
-                     }
+                        Gleichstand = false
+                     } else {
+                        if (Winner[i] === Winner[winnerIndex]) {
+                           console.log("Gleichstand")
+                           Gleichstand = true 
+                        }
+
                   }
+                  }
+
+                  if (Gleichstand = true ) {
+                     winnerIndex = 5
+                  }
+
 
                   setTimeout(function () {
 
@@ -236,7 +263,7 @@ socket.on('serverEvent', function (message) {
 
                      setTimeout(function () {
                      playMelody(ScoreP1);
-                  }, delay * 2.5 );
+                  }, delay * 3 );
 
                      setTimeout(function () { 
                      $('.WinningText').removeClass("hidden");
@@ -249,7 +276,7 @@ socket.on('serverEvent', function (message) {
 
                      setTimeout(function () {
                      playMelody(ScoreP2);
-                  }, delay * 2.5 );
+                  }, delay * 3 );
 
                      setTimeout(function () { 
                         $('.WinningText').removeClass("hidden");
@@ -262,7 +289,7 @@ socket.on('serverEvent', function (message) {
 
                      setTimeout(function () {
                      playMelody(ScoreP3);
-                  }, delay * 2.5 );
+                  }, delay * 3 );
 
                      setTimeout(function () { 
                         $('.WinningText').removeClass("hidden");
@@ -275,11 +302,24 @@ socket.on('serverEvent', function (message) {
 
                      setTimeout(function () {
                      playMelody(ScoreP4);
-                  }, delay * 2.5 );
+                  }, delay * 3);
 
                      setTimeout(function () { 
                         $('.WinningText').removeClass("hidden");
                         $('.WinningText').html("Player 4 won the Game");
+                        $('.RestartButton').removeClass("hidden");
+                     }, delay * 2 );
+                  }
+                  if (winnerIndex === 5) {
+                     console.log("Unentschieden")
+
+                     setTimeout(function () {
+                     Unentschieden.play()
+                  }, delay * 3);
+
+                     setTimeout(function () { 
+                        $('.WinningText').removeClass("hidden");
+                        $('.WinningText').html("Unentschieden");
                         $('.RestartButton').removeClass("hidden");
                      }, delay * 2 );
                   }
