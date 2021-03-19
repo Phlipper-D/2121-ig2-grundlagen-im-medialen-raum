@@ -306,7 +306,7 @@ socket.on('serverEvent', function (message) {
 
                      setTimeout(function () {
                      Unentschieden.play()
-                  }, delay * 3);
+                  }, delay * 5);
 
                      setTimeout(function () { 
                         $('.WinningText').removeClass("hidden");
