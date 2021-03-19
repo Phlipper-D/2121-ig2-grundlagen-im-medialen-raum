@@ -228,12 +228,10 @@ socket.on('serverEvent', function (message) {
                      if (Winner[i] > Winner[winnerIndex]) {
                         winnerIndex = i;
                         Gleichstand = false
-                     } else {
+                     }  
                         if (Winner[i] === Winner[winnerIndex]) {
                            console.log("Gleichstand")
                            Gleichstand = true 
-                        }
-
                   }
                   }
 
