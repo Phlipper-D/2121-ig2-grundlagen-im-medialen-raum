@@ -21,6 +21,10 @@ let cardsPlayed = []
 
 let sounds = ['a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e', 'f', 'f', 'g', 'g', 'h', 'h', ]
 
+let a 
+let b
+let c 
+
 let ScoreP1 = []
 let ScoreP2 = []
 let ScoreP3 = []
