@@ -37,14 +37,14 @@ let Gleichstand
 delay = 1000
 
 function setup() {
-   audioa = new Audio('https://s3-us-west-2.amazonaws.com/s.cdpn.io/62105/dino-win.mp3');
-   audiob = new Audio('https://s3-us-west-2.amazonaws.com/s.cdpn.io/62105/audio-ahahah.ogg');
-   audioc = new Audio('https://s3-us-west-2.amazonaws.com/s.cdpn.io/62105/audio-egg.mp3');
-   audiod = new Audio('assets/PatchArena_marimba-063.mp3');
-   audioe = new Audio('assets/PatchArena_marimba-064.mp3');
-   audiof = new Audio('assets/PatchArena_marimba-065.mp3');
-   audiog = new Audio('assets/PatchArena_marimba-066.mp3');
-   audioh = new Audio('assets/PatchArena_marimba-067.mp3');
+   audioa = new Audio('Sounds/clap-808.wav');
+   audiob = new Audio('Sounds/cowbell-808.wav');
+   audioc = new Audio('Sounds/hihat-dist02.wav');
+   audiod = new Audio('Sounds/kick-808.wav');
+   audioe = new Audio('Sounds/openhat-analog.wav');
+   audiof = new Audio('Sounds/ride-acoustic01.wav');
+   audiog = new Audio('Sounds/snare-lofi02.wav');
+   audioh = new Audio('Sounds/tom-fm.wav');
    Unentschieden = new Audio('https://www.myinstants.com/media/sounds/erro.mp3');
 }
 
@@ -402,7 +402,6 @@ $('.RestartButton').click(function () {
 });
 
 //Animationen 
-//Spielende? (Sounds werden in Score.Array gepackt und ausgelesen)
 //Sounds
 
 
