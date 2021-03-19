@@ -212,33 +212,26 @@ socket.on('serverEvent', function (message) {
                   Winner = [ScoreP1.length, ScoreP2.length, ScoreP3.length, ScoreP4.length]
                   
 
-                  // let winnerIndex = 0;
-                  // for (let i = 1; i < Winner.length; i++) {
-                  //    if (Winner[i] === Winner[winnerIndex]) {
-                  //       console.log("Gleichstand")
-                  //    } else {
-                  //    if (Winner[i] > Winner[winnerIndex]) {
-                  //       winnerIndex = i;
-                  //    }
-                  // }
-                  // }
 
                   let winnerIndex = 0;
                   for (let i = 1; i < Winner.length; i++) {
                      if (Winner[i] > Winner[winnerIndex]) {
                         winnerIndex = i;
                         Gleichstand = false
-                     }  
+                     }  else {
                         if (Winner[i] === Winner[winnerIndex]) {
                            console.log("Gleichstand")
                            Gleichstand = true 
+                        }
                   }
                   }
+                  
+                  setTimeout(function () {
 
                   if (Gleichstand = true ) {
                      winnerIndex = 5
                   }
-
+                  }, delay / 4 );
 
                   setTimeout(function () {
 
@@ -400,7 +393,6 @@ $('.RestartButton').click(function () {
 });
 
 //Animationen 
-//Sounds
 
 
 
