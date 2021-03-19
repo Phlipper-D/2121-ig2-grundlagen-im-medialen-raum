@@ -131,6 +131,7 @@ socket.on('serverEvent', function (message) {
       ScoreP2 = []
       ScoreP3 = []
       ScoreP4 = []
+      Winner = []
       function shuffle(sounds) {
          var currentIndex = sounds.length,
             temporaryValue, randomIndex;
@@ -204,10 +205,15 @@ socket.on('serverEvent', function (message) {
               
 
                if (Endgame.length === 16) {
-                  Winner.push(ScoreP1.length, ScoreP2.length, ScoreP3.length, ScoreP4.length)
+                  Winner = [ScoreP1.length, ScoreP2.length, ScoreP3.length, ScoreP4.length]
+                  
 
-                  console.log(Winner)
-                  console.log(Math.max(...Winner))
+                  let winnerIndex = 0;
+                  for (let i = 1; i < Winner.length; i++) {
+                     if (Winner[i] > Winner[winnerIndex]) {
+                        winnerIndex = i;
+                     }
+                  }
 
                   setTimeout(function () {
 
@@ -225,7 +231,7 @@ socket.on('serverEvent', function (message) {
 
 
 
-                  if (ScoreP1.length === Math.max(...Winner)) {
+                  if (winnerIndex === 0 ) {
                      console.log("Spieler 1 hat gewonnen")
 
                      playMelody(ScoreP1);
@@ -236,7 +242,7 @@ socket.on('serverEvent', function (message) {
                      $('.RestartButton').removeClass("hidden");
                   }, delay * 2 );
                   }
-                  if (ScoreP2.length === Math.max(...Winner)) {
+                  if (winnerIndex === 1) {
                      console.log("Spieler 2 hat gewonnen")
                      playMelody(ScoreP2);
 
@@ -246,7 +252,7 @@ socket.on('serverEvent', function (message) {
                         $('.RestartButton').removeClass("hidden");
                      }, delay * 2 );
                   }
-                  if (ScoreP3.length === Math.max(...Winner)) {
+                  if (winnerIndex === 2) {
                      console.log("Spieler 3 hat gewonnen")
 
                      setTimeout(function () { 
@@ -255,7 +261,7 @@ socket.on('serverEvent', function (message) {
                         $('.RestartButton').removeClass("hidden");
                      }, delay * 2 );
                   }
-                  if (ScoreP4.length === Math.max(...Winner)) {
+                  if (winnerIndex === 3) {
                      console.log("Spieler 4 hat gewonnen")
 
                      setTimeout(function () { 
