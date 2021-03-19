@@ -157,39 +157,8 @@ socket.on('serverEvent', function (message) {
    if (message.type == "played") {
       console.log(sounds[message.cellIndex])
 
-
-         if (sounds[message.cellIndex] == 1) {
-                  console.log('Sound A abgespielt')
-                  audioa.play();
-         }
-         if (sounds[message.cellIndex] == 2) {
-            console.log('Sound B abgespielt')
-            audiob.play();
-         }
-         if (sounds[message.cellIndex] == 3) {
-            console.log('Sound c abgespielt')
-            audioc.play();
-         }
-         if (sounds[message.cellIndex] == 4) {
-            console.log('Sound d abgespielt')
-            audiod.play();
-         }
-         if (sounds[message.cellIndex] == 5) {
-            console.log('Sound e abgespielt')
-            audioe.play();
-         }
-         if (sounds[message.cellIndex] == 6) {
-            console.log('Sound f abgespielt')
-            audiof.play();
-         }
-         if (sounds[message.cellIndex] == 7) {
-            console.log('Sound g abgespielt')
-            audiog.play();
-         }
-         if (sounds[message.cellIndex] == 8) {
-            console.log('Sound h abgespielt')
-            audioh.play();
-         }
+      playSoundFileByID(sounds[message.cellIndex]);
+       
 
       if (cardsPlayed.length == 1) {
 
@@ -214,7 +183,7 @@ socket.on('serverEvent', function (message) {
 
                Endgame.push(cardsPlayed[0], cardsPlayed[1])
 
-
+            
                if (message.playerIndex === 0) {
 
                   ScoreP1.push(cardsPlayed[0])
@@ -249,17 +218,19 @@ socket.on('serverEvent', function (message) {
                      $('.game-status').addClass("hidden");
 
                      setTimeout(function () { 
-                     $('.Overlay').removeClass("hidden");
+                       $('.Overlay').removeClass("hidden");
                     
                      
 
                      }, delay / 2 );
                   }, delay * 1.5);
 
+
+
                   if (ScoreP1.length === Math.max(...Winner)) {
                      console.log("Spieler 1 hat gewonnen")
 
-                     Sc
+                     playMelody(ScoreP1);
 
                      setTimeout(function () { 
                      $('.WinningText').removeClass("hidden");
@@ -269,6 +240,7 @@ socket.on('serverEvent', function (message) {
                   }
                   if (ScoreP2.length === Math.max(...Winner)) {
                      console.log("Spieler 2 hat gewonnen")
+                     playMelody(ScoreP2);
 
                      setTimeout(function () { 
                         $('.WinningText').removeClass("hidden");
@@ -393,4 +365,54 @@ function updateStatus() {
    } else {
       $('.turn-status').html("Waiting for Player " + (whosTurn + 1));
    }
+}
+
+
+function playMelody(soundIDs) {
+   let soundID = soundIDs.shift();
+   playSoundFileByID(soundID);
+
+   if (soundIDs.length > 0) {
+      setTimeout(function() {
+         playMelody(soundIDs);
+      }, 1000);   
+   }
+}
+
+
+function playSoundFileByID(soundID) {
+
+   if (soundID == 1) {
+      console.log('Sound A abgespielt')
+      audioa.play();
+   }
+   if (soundID == 2) {
+   console.log('Sound B abgespielt')
+   audiob.play();
+   }
+   if (soundID == 3) {
+   console.log('Sound c abgespielt')
+   audioc.play();
+   }
+   if (soundID == 4) {
+   console.log('Sound d abgespielt')
+   audiod.play();
+   }
+   if (soundID == 5) {
+   console.log('Sound e abgespielt')
+   audioe.play();
+   }
+   if (soundID == 6) {
+   console.log('Sound f abgespielt')
+   audiof.play();
+   }
+   if (soundID == 7) {
+   console.log('Sound g abgespielt')
+   audiog.play();
+   }
+   if (soundID == 8) {
+   console.log('Sound h abgespielt')
+   audioh.play();
+   }
+
 }
