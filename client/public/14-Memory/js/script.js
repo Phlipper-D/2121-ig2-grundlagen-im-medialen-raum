@@ -244,6 +244,7 @@ socket.on('serverEvent', function (message) {
                   }
                   if (winnerIndex === 1) {
                      console.log("Spieler 2 hat gewonnen")
+
                      playMelody(ScoreP2);
 
                      setTimeout(function () { 
@@ -255,6 +256,8 @@ socket.on('serverEvent', function (message) {
                   if (winnerIndex === 2) {
                      console.log("Spieler 3 hat gewonnen")
 
+                     playMelody(ScoreP3);
+
                      setTimeout(function () { 
                         $('.WinningText').removeClass("hidden");
                         $('.WinningText').html("Player 3 won the Game");
@@ -263,6 +266,8 @@ socket.on('serverEvent', function (message) {
                   }
                   if (winnerIndex === 3) {
                      console.log("Spieler 4 hat gewonnen")
+
+                     playMelody(ScoreP4);
 
                      setTimeout(function () { 
                         $('.WinningText').removeClass("hidden");
