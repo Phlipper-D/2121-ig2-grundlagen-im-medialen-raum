@@ -117,18 +117,18 @@ socket.on('serverEvent', function (message) {
 
    //SOund wird durch Buchstaben abgespielt
    
-if (sounds[message.cellIndex == 1]) {
-         console.log('Sound A abgespielt')
-         audioa.play();
-}
-if (sounds[message.cellIndex === 2]) {
-   console.log('Sound B abgespielt')
-   audiob.play();
-}
-if (sounds[message.cellIndex === 3]) {
-   console.log('Sound c abgespielt')
-   audioc.play();
-}
+// if (sounds[message.cellIndex == 1]) {
+//          console.log('Sound A abgespielt')
+//          audioa.play();
+// }
+// if (sounds[message.cellIndex === 2]) {
+//    console.log('Sound B abgespielt')
+//    audiob.play();
+// }
+// if (sounds[message.cellIndex === 3]) {
+//    console.log('Sound c abgespielt')
+//    audioc.play();
+// }
 
 
 
@@ -155,6 +155,20 @@ if (sounds[message.cellIndex === 3]) {
 
    if (message.type == "played") {
       console.log(sounds[message.cellIndex])
+
+
+         if (sounds[message.cellIndex == 1]) {
+                  console.log('Sound A abgespielt')
+                  audioa.play();
+         }
+         if (sounds[message.cellIndex === 2]) {
+            console.log('Sound B abgespielt')
+            audiob.play();
+         }
+         if (sounds[message.cellIndex === 3]) {
+            console.log('Sound c abgespielt')
+            audioc.play();
+         }
 
       if (cardsPlayed.length == 1) {
 
@@ -197,7 +211,7 @@ if (sounds[message.cellIndex === 3]) {
                   ScoreP4.push(cardsPlayed[0], cardsPlayed[1])
                }
 
-               ScoreP4.length
+              
 
                if (Endgame.length === 4) {
                   Winner.push(ScoreP1.length, ScoreP2.length, ScoreP3.length, ScoreP4.length)
