@@ -185,10 +185,8 @@ socket.on('serverEvent', function (message) {
 
             
                if (message.playerIndex === 0) {
-
                   ScoreP1.push(cardsPlayed[0])
 
-                  ScoreP1[0].play();
                }
 
                if (message.playerIndex === 1) {
