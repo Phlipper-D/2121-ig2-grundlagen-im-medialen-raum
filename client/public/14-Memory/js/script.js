@@ -157,15 +157,15 @@ socket.on('serverEvent', function (message) {
       console.log(sounds[message.cellIndex])
 
 
-         if (sounds[message.cellIndex == 1]) {
+         if (sounds[message.cellIndex] == 1) {
                   console.log('Sound A abgespielt')
                   audioa.play();
          }
-         if (sounds[message.cellIndex === 2]) {
+         if (sounds[message.cellIndex] === 2) {
             console.log('Sound B abgespielt')
             audiob.play();
          }
-         if (sounds[message.cellIndex === 3]) {
+         if (sounds[message.cellIndex] === 3) {
             console.log('Sound c abgespielt')
             audioc.play();
          }
