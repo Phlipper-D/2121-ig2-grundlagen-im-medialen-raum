@@ -24,6 +24,24 @@ body {
 
 }
 
+.Ending {
+    background-color: #6b6b6b;
+}
+
+.Overlay{
+    background-color: rgba(30, 30, 30, 0.6);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1920px;
+    height: 1080px;
+    z-index: 102;
+
+}
+
+#Endingscreen {
+    visibility: hidden;
+}
 
 
 .empty {

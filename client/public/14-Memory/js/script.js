@@ -116,19 +116,6 @@ socket.on('serverEvent', function (message) {
 
 
    //SOund wird durch Buchstaben abgespielt
-   
-// if (sounds[message.cellIndex == 1]) {
-//          console.log('Sound A abgespielt')
-//          audioa.play();
-// }
-// if (sounds[message.cellIndex === 2]) {
-//    console.log('Sound B abgespielt')
-//    audiob.play();
-// }
-// if (sounds[message.cellIndex === 3]) {
-//    console.log('Sound c abgespielt')
-//    audioc.play();
-// }
 
 
 
@@ -196,7 +183,6 @@ socket.on('serverEvent', function (message) {
          cell = $(cell);
          cell.removeClass("empty");
          cardsPlayed.push(sounds[message.cellIndex])
-         //cell.css("background-color", playerColors[message.playerIndex]);
          cell.css("background-color", '#6b6b6b');
 
          if (cardsPlayed[0] === cardsPlayed[1]) {
@@ -233,14 +219,19 @@ socket.on('serverEvent', function (message) {
 
               
 
-               if (Endgame.length === 16) {
+               if (Endgame.length === 4) {
                   Winner.push(ScoreP1.length, ScoreP2.length, ScoreP3.length, ScoreP4.length)
 
                   console.log(Winner)
                   console.log(Math.max(...Winner))
 
-                  $('.RestartButton').removeClass("hidden");
+                  //$('.RestartButton').removeClass("hidden");
 
+                  setTimeout(function () {
+
+                     $('.cell').addClass("Ending");
+
+                  }, delay * 1.5);
 
                   if (ScoreP1.length === Math.max(...Winner)) {
                      console.log("Spieler 1 hat gewonnen")
@@ -329,8 +320,6 @@ function getMaxOfArray(Winner) {
 }
 
 //Animationen 
-
-//Sounds mappen
 //Spielende? (Sounds werden in Score.Array gepackt und ausgelesen)
 //Replay Button?
 
