@@ -260,6 +260,7 @@ socket.on('serverEvent', function (message) {
                      $('.WinningText').removeClass("hidden");
                      $('.WinningText').html("Player 1 won the Game");
                      $('.RestartButton').removeClass("hidden");
+                     $('.RestartButton').addClass("clickable");
                   }, delay * 2 );
                   }
                   if (winnerIndex === 1) {
@@ -273,6 +274,7 @@ socket.on('serverEvent', function (message) {
                         $('.WinningText').removeClass("hidden");
                         $('.WinningText').html("Player 2 won the Game");
                         $('.RestartButton').removeClass("hidden");
+                        $('.RestartButton').addClass("clickable");
                      }, delay * 2 );
                   }
                   if (winnerIndex === 2) {
@@ -286,6 +288,7 @@ socket.on('serverEvent', function (message) {
                         $('.WinningText').removeClass("hidden");
                         $('.WinningText').html("Player 3 won the Game");
                         $('.RestartButton').removeClass("hidden");
+                        $('.RestartButton').addClass("clickable");
                      }, delay * 2 );
                   }
                   if (winnerIndex === 3) {
@@ -299,6 +302,7 @@ socket.on('serverEvent', function (message) {
                         $('.WinningText').removeClass("hidden");
                         $('.WinningText').html("Player 4 won the Game");
                         $('.RestartButton').removeClass("hidden");
+                        $('.RestartButton').addClass("clickable");
                      }, delay * 2 );
                   }
                   if (winnerIndex === 5) {
@@ -309,12 +313,15 @@ socket.on('serverEvent', function (message) {
                   }, delay * 5);
 
                      setTimeout(function () { 
+                        $('.RestartButton').html("Revanche!");
                         $('.WinningText').removeClass("hidden");
                         $('.WinningText').html("Unentschieden");
                         $('.RestartButton').removeClass("hidden");
+                        $('.RestartButton').addClass("clickable");
                      }, delay * 2 );
                   }
                }
+
                IndexCount = []
                cardsPlayed = [];
                updateStatus();
@@ -418,7 +425,7 @@ function playMelody(soundIDs) {
    let soundID = soundIDs.shift();
    playSoundFileByID(soundID);
 
-   if (soundIDs.length > 0) {
+   if (soundIDs.length  > 0) {
       setTimeout(function() {
          playMelody(soundIDs);
       }, 1000);   

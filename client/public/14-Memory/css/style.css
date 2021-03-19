@@ -34,6 +34,8 @@ body {
     width: 1920px;
     height: 1080px;
     z-index: 102;
+   transition: opacity ease-in-out 500ms;
+    
 }
 
 .empty {
@@ -282,6 +284,8 @@ body {
     
     background: #B40097;
     border-radius: 10px;
+
+    transition: opacity ease-in-out 500ms;
 }
 
 
@@ -306,10 +310,16 @@ body {
     z-index: 103;
 
     color: #ffffff;
+
+    transition: opacity ease-in-out 500ms;
 }
 
 
 .hidden {
-    visibility: hidden;
+opacity: 0;
+pointer-events: none;
 }
 
+.clickable {
+    pointer-events: unset;
+}
