@@ -39,11 +39,6 @@ body {
 
 }
 
-#Endingscreen {
-    visibility: hidden;
-}
-
-
 .empty {
     background-color: #e2e2e2;
     border-radius: 10px;
@@ -271,20 +266,51 @@ body {
 }
 
 .RestartButton {
-    width: 200px;
-    height: 100px;
-    background-color: #ffffff;
-    border: 6px solid #B40097;
+    
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: Univers Next Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    color: rgba(253, 253, 253, 0.9);
+    
     position: absolute;
-    left: 920px;
-    top: 480px;
-    z-index: 102;
-    vertical-align: center;
-    color: #B40097;
+    width: 225px;
+    height: 100px;
+    left: 840px;
+    top: 500px;
+    z-index: 103;
+    
+    background: #B40097;
+    border-radius: 10px;
 }
+
+
+.WinningText{
+  
+    font-family: Univers Next Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 36px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    position: absolute;
+    width: 450px;
+    height: 40px;
+    left: 730px;
+    top: 405px;
+    z-index: 103;
+
+    color: #ffffff;
+}
+
 
 .hidden {
     visibility: hidden;

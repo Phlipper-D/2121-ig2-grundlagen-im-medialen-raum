@@ -229,13 +229,23 @@ socket.on('serverEvent', function (message) {
 
                   setTimeout(function () {
 
-                     $('.cell').addClass("Ending");
+                     $('.cell').css("background-color", '#6b6b6b');
+                     $('.turn-status').addClass("hidden");
+                     $('.game-status').addClass("hidden");
 
+                     setTimeout(function () { 
+                     $('.Overlay').removeClass("hidden");
+                     $('.RestartButton').removeClass("hidden");
+                     
+
+                     }, delay / 2 );
                   }, delay * 1.5);
 
                   if (ScoreP1.length === Math.max(...Winner)) {
                      console.log("Spieler 1 hat gewonnen")
 
+                     $('.WinningText').removeClass("hidden");
+                     $('.WinningText').html("Player 1 won the Game");
 
                   }
                   if (ScoreP2.length === Math.max(...Winner)) {
