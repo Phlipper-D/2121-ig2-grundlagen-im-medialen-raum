@@ -6,7 +6,15 @@ let playerColors = ['#cc0000', '#70a500', '#cc9710', '#008fcc']
 let playerCount = 0;
 let whosTurn = 0;
 let samples = [];
-let audio
+let audioa
+let audiob
+let audioc
+let audiod
+let audioe
+let audiof
+let audiog
+let audioh
+
 let IndexCount = [];
 
 let cardsPlayed = []
@@ -25,7 +33,14 @@ delay = 1000
 
 
 function setup() {
-   audio = new Audio('assets/PatchArena_marimba-060.mp3');
+   audioa = new Audio('assets/PatchArena_marimba-060.mp3');
+   audiob = new Audio('assets/PatchArena_marimba-061.mp3');
+   audioc = new Audio('assets/PatchArena_marimba-062.mp3');
+   audiod = new Audio('assets/PatchArena_marimba-063.mp3');
+   audioe = new Audio('assets/PatchArena_marimba-064.mp3');
+   audiof = new Audio('assets/PatchArena_marimba-065.mp3');
+   audiog = new Audio('assets/PatchArena_marimba-066.mp3');
+   audioh = new Audio('assets/PatchArena_marimba-067.mp3');
 }
 
 
@@ -100,9 +115,21 @@ socket.on('serverEvent', function (message) {
 
    //SOund wird durch Buchstaben abgespielt
    if (sounds[message.cellIndex]) {
-      console.log('Sound abgespielt')
-      // mySound.play();
-      audio.play();
+
+      if (sounds[message.cellIndex === a]) {
+         console.log('Sound A abgespielt')
+         audioa.play();
+}
+      if (sounds[message.cellIndex === b]) {
+   console.log('Sound B abgespielt')
+   audiob.play();
+}
+if (sounds[message.cellIndex === c]) {
+   console.log('Sound c abgespielt')
+   audioc.play();
+}
+
+    
 
    }
 
