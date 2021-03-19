@@ -116,13 +116,12 @@ socket.on('serverEvent', function (message) {
 
 
    //SOund wird durch Buchstaben abgespielt
-   if (sounds[message.cellIndex]) {
-
-      if (sounds[message.cellIndex === 1]) {
+   
+if (sounds[message.cellIndex == 1]) {
          console.log('Sound A abgespielt')
          audioa.play();
 }
-      if (sounds[message.cellIndex === 2]) {
+if (sounds[message.cellIndex === 2]) {
    console.log('Sound B abgespielt')
    audiob.play();
 }
@@ -131,9 +130,6 @@ if (sounds[message.cellIndex === 3]) {
    audioc.play();
 }
 
-    
-
-   }
 
 
    //Random Array wird von neusten Spierler überschrieben
