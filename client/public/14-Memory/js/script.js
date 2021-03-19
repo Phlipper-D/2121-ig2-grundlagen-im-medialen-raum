@@ -234,7 +234,9 @@ socket.on('serverEvent', function (message) {
                   if (winnerIndex === 0 ) {
                      console.log("Spieler 1 hat gewonnen")
 
+                     setTimeout(function () {
                      playMelody(ScoreP1);
+                  }, delay * 2.5 );
 
                      setTimeout(function () { 
                      $('.WinningText').removeClass("hidden");
@@ -245,7 +247,9 @@ socket.on('serverEvent', function (message) {
                   if (winnerIndex === 1) {
                      console.log("Spieler 2 hat gewonnen")
 
+                     setTimeout(function () {
                      playMelody(ScoreP2);
+                  }, delay * 2.5 );
 
                      setTimeout(function () { 
                         $('.WinningText').removeClass("hidden");
@@ -256,7 +260,9 @@ socket.on('serverEvent', function (message) {
                   if (winnerIndex === 2) {
                      console.log("Spieler 3 hat gewonnen")
 
+                     setTimeout(function () {
                      playMelody(ScoreP3);
+                  }, delay * 2.5 );
 
                      setTimeout(function () { 
                         $('.WinningText').removeClass("hidden");
@@ -267,7 +273,9 @@ socket.on('serverEvent', function (message) {
                   if (winnerIndex === 3) {
                      console.log("Spieler 4 hat gewonnen")
 
+                     setTimeout(function () {
                      playMelody(ScoreP4);
+                  }, delay * 2.5 );
 
                      setTimeout(function () { 
                         $('.WinningText').removeClass("hidden");
