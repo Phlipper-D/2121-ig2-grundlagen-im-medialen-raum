@@ -26,7 +26,7 @@ body {
     background-color: #6b6b6b;
 }
 
-.Overlay{
+.Overlay {
     background-color: rgba(30, 30, 30, 0.6);
     position: absolute;
     left: 0px;
@@ -34,8 +34,8 @@ body {
     width: 1920px;
     height: 1080px;
     z-index: 102;
-   transition: opacity ease-in-out 500ms;
-    
+    transition: opacity ease-in-out 500ms;
+
 }
 
 .empty {
@@ -265,7 +265,7 @@ body {
 }
 
 .RestartButton {
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -274,14 +274,14 @@ body {
     font-weight: bold;
     font-size: 36px;
     color: rgba(253, 253, 253, 0.9);
-    
+
     position: absolute;
     width: 225px;
     height: 100px;
     left: 840px;
     top: 500px;
     z-index: 103;
-    
+
     background: #B40097;
     border-radius: 10px;
 
@@ -289,8 +289,8 @@ body {
 }
 
 
-.WinningText{
-  
+.WinningText {
+
     font-family: Univers Next Pro;
     font-style: normal;
     font-weight: bold;
@@ -316,8 +316,8 @@ body {
 
 
 .hidden {
-opacity: 0;
-pointer-events: none;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .clickable {
