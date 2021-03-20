@@ -46,7 +46,7 @@ document.getElementById("Image").onclick = function () {
    this.remove();
 }
 
-
+//shuffle Fkt.
 function shuffle(sounds) {
    var currentIndex = sounds.length,
       temporaryValue, randomIndex;
@@ -148,7 +148,7 @@ socket.on('serverEvent', function (message) {
          sounds
       });
    }
-
+//Vergleichsfunktion
    if (message.type == "played") {
       console.log(sounds[message.cellIndex])
 
@@ -406,7 +406,7 @@ function updateStatus() {
    }
 }
 
-
+// Melody
 function playMelody(soundIDs) {
    let soundID = soundIDs.shift();
    playSoundFileByID(soundID);
